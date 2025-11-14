@@ -14,31 +14,31 @@ const services: Service[] = [
     id: 1,
     title: 'Eye Exams',
     description: 'Comprehensive eye examinations using advanced diagnostic technology for accurate vision assessment.',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80',
+    image: '/eye-exams.png',
   },
   {
     id: 2,
     title: 'Eyewear',
     description: 'Premium collection of stylish frames and lenses from leading brands worldwide.',
-    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&q=80',
+    image: '/eyewear.png',
   },
   {
     id: 3,
     title: 'Contact Lens',
     description: 'Expert fitting and consultation for comfortable and safe contact lens solutions.',
-    image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80',
+    image: '/lens.png',
   },
   {
     id: 4,
     title: 'CUES',
     description: 'Specialized CUES (Contact Lens User Education and Support) services for optimal lens care.',
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80',
+    image: '/cues.png',
   },
   {
     id: 5,
     title: 'Dry Eye',
     description: 'Comprehensive diagnosis and treatment solutions for dry eye conditions and eye comfort.',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80',
+    image: '/dry eye.png',
   },
 ];
 
