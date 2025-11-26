@@ -70,32 +70,27 @@ export default function Blogs() {
               Stay informed with expert advice on eye care, eyewear trends, and vision health.
             </p>
           </div>
-          <button className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-white py-2.5 px-6 text-center font-semibold text-[#19395f] shadow-sm hover:bg-[#19395f] hover:text-white hover:border-[#19395f]/30 transition-all duration-300 self-start md:self-auto">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 scale-100 rounded-lg bg-[#19395f] transition-all duration-300 group-hover:scale-[100.8]"></div>
-              <span className="inline-block whitespace-nowrap transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
-                View All Blogs
-              </span>
-            </div>
-            <div className="absolute top-0 z-10 flex w-full h-full translate-x-12 items-center justify-center gap-2 text-white opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100">
-              <span className="whitespace-nowrap">View All Blogs</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-arrow-right"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </div>
-          </button>
+          <a 
+            href="#blogs" 
+            className="flex items-center gap-2 text-[#19395f] hover:text-[#80acc9] transition-colors font-medium self-start md:self-auto"
+          >
+            <span>View All Blogs</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-arrow-right"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
         </div>
 
         {/* Blogs Grid */}

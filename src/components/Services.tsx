@@ -13,32 +13,38 @@ const services: Service[] = [
   {
     id: 1,
     title: 'Eye Exams',
-    description: 'Comprehensive eye examinations using advanced diagnostic technology for accurate vision assessment.',
+    description: 'Comprehensive eye examinations using advanced diagnostic technology for accurate vision assessment. NHS and private examinations available.',
     image: '/eye-exams.png',
   },
   {
     id: 2,
     title: 'Eyewear',
-    description: 'Premium collection of stylish frames and lenses from leading brands worldwide.',
+    description: 'Premium collection of stylish frames and lenses from leading brands worldwide. Expert styling consultation and precision lenses.',
     image: '/eyewear.png',
   },
   {
     id: 3,
-    title: 'Contact Lens',
-    description: 'Expert fitting and consultation for comfortable and safe contact lens solutions.',
+    title: 'Contact Lenses',
+    description: 'Expert fitting and consultation for comfortable and safe contact lens solutions. Wide range including multifocal and specialist lenses.',
     image: '/lens.png',
   },
   {
     id: 4,
     title: 'CUES',
-    description: 'Specialized CUES (Contact Lens User Education and Support) services for optimal lens care.',
+    description: 'Community Urgent Eyecare Service providing urgent assessment and treatment for sudden onset eye problems.',
     image: '/cues.png',
   },
   {
     id: 5,
     title: 'Dry Eye',
-    description: 'Comprehensive diagnosis and treatment solutions for dry eye conditions and eye comfort.',
+    description: 'Specialist Dry Eye Clinic with tailored treatment plans and comprehensive range of dry eye products.',
     image: '/dry eye.png',
+  },
+  {
+    id: 6,
+    title: 'Domicillary Services',
+    description: 'Home eye tests for those unable to visit our practice. Full comprehensive exams and frame selection in the comfort of your home.',
+    image: '/domicillary.png',
   },
 ];
 
@@ -67,12 +73,10 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Bottom Row - 2 Cards Centered */}
-          <div className="flex justify-center gap-8 flex-wrap">
-            {services.slice(3, 5).map((service) => (
-              <div key={service.id} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)]">
-                <ServiceCard service={service} />
-              </div>
+          {/* Bottom Row - 3 Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.slice(3, 6).map((service) => (
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </div>

@@ -3,6 +3,37 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
+// Shiny button animation styles
+const shinyButtonStyles = `
+  @keyframes shiny {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(200%) translateY(200%) rotate(45deg);
+    }
+  }
+  
+  .shiny-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    animation: shiny 3s infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+`;
+
 interface HeroSlide {
   id: number;
   image: string;
@@ -58,7 +89,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-[700px] md:min-h-[850px] lg:min-h-[950px] flex items-center justify-center overflow-hidden">
+    <>
+      <style>{shinyButtonStyles}</style>
+      <section className="relative w-full min-h-[700px] md:min-h-[850px] lg:min-h-[950px] flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Carousel Slides */}
       <div className="absolute inset-0">
         {heroSlides.map((slide, index) => (
@@ -94,7 +127,7 @@ export default function Hero() {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium text-white mb-6 leading-tight drop-shadow-lg">
-            {heroSlides[currentIndex].title}
+            Eyesite Opticians
           </h1>
 
           {/* Description */}
@@ -104,31 +137,8 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 scale-100 rounded-lg bg-white transition-all duration-300 group-hover:scale-[100.8]"></div>
-                <span className="inline-block whitespace-nowrap transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
-                  Book Eye Exam
-                </span>
-              </div>
-              <div className="absolute top-0 z-10 flex w-full h-full translate-x-12 items-center justify-center gap-2 text-[#19395f] opacity-0 transition-all duration-300 group-hover:-translate-x-7 group-hover:opacity-100">
-                <span className="whitespace-nowrap">Book Eye Exam</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-arrow-right"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </div>
+            <button className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300 shiny-button">
+              <span className="inline-block whitespace-nowrap">Book Appointment</span>
             </button>
             <button className="rounded-full border-[0.5px] border-[#19395f]/30 bg-white py-3.5 cursor-pointer px-8 text-center font-semibold text-[#19395f] shadow-lg transition-all duration-300 hover:bg-[#19395f] hover:text-white hover:border-[#19395f]/20">
               View Services
@@ -153,6 +163,7 @@ export default function Hero() {
         ))}
       </div>
     </section>
+    </>
   );
 }
 

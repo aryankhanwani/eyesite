@@ -1,0 +1,248 @@
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Image from 'next/image';
+
+export default function ContactUsPage() {
+  return (
+    <div className="min-h-screen bg-[#faf9f6]">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden pt-20 md:pt-24">
+        <div className="absolute inset-0">
+          <Image
+            src="/cues.png"
+            alt="Contact Us"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+        
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 md:py-24">
+          <div className="max-w-3xl">
+            <div className="mb-6">
+              <span className="inline-block bg-[#19395f] text-white px-4 py-1.5 rounded-full text-sm font-medium">
+                CONTACT US
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium text-white mb-6 leading-tight drop-shadow-lg">
+              Get in Touch
+            </h1>
+            <p className="text-lg md:text-xl text-white/95 mb-10 max-w-2xl leading-relaxed drop-shadow-md">
+              We're here to help with all your eye care needs. Reach out to us through any of the channels below.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="w-full py-16 md:py-24 bg-[#faf9f6]">
+        <div className="max-w-7xl mx-auto px-8">
+          {/* Contact Information Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* Phone */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-[#19395f]/10 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-[#19395f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-[#19395f] mb-3">Phone</h3>
+              <p className="text-lg text-black/70 mb-2">+44 123 456 7890</p>
+              <p className="text-sm text-black/60">Mon - Sat: 9:00 AM - 6:00 PM</p>
+            </div>
+
+            {/* Email */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-[#19395f]/10 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-[#19395f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-[#19395f] mb-3">Email</h3>
+              <p className="text-lg text-black/70 mb-2">info@eyesiteopticians.com</p>
+              <p className="text-sm text-black/60">We'll respond within 24 hours</p>
+            </div>
+
+            {/* Address */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-[#19395f]/10 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-[#19395f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-[#19395f] mb-3">Visit Us</h3>
+              <p className="text-lg text-black/70 mb-2">123 High Street</p>
+              <p className="text-sm text-black/60">City, Postcode, UK</p>
+            </div>
+          </div>
+
+          {/* Contact Form & Map Section */}
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            {/* Contact Form */}
+            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-[#e7e8ea]/50">
+              <h2 className="text-3xl md:text-4xl font-medium text-[#19395f] mb-6">
+                Send Us a Message
+              </h2>
+              <form className="space-y-6">
+                <div>
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-[#19395f] mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-[#19395f] mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
+                    placeholder="john@example.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-phone" className="block text-sm font-medium text-[#19395f] mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="contact-phone"
+                    name="phone"
+                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
+                    placeholder="+44 123 456 7890"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-subject" className="block text-sm font-medium text-[#19395f] mb-2">
+                    Subject *
+                  </label>
+                  <select
+                    id="contact-subject"
+                    name="subject"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="appointment">Book Appointment</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="service">Service Question</option>
+                    <option value="complaint">Complaint</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#19395f] mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={5}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40 resize-none"
+                    placeholder="Your message here..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="group relative w-full cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300"
+                >
+                  <span className="inline-block whitespace-nowrap">Send Message</span>
+                </button>
+              </form>
+            </div>
+
+            {/* Map & Additional Info */}
+            <div className="space-y-6">
+              {/* Map Placeholder */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50">
+                <h3 className="text-xl font-semibold text-[#19395f] mb-4">Find Us</h3>
+                <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] aspect-[4/3] flex items-center justify-center">
+                  <div className="text-center">
+                    <svg className="w-16 h-16 text-[#19395f]/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <p className="text-black/60">Map integration can be added here</p>
+                  </div>
+                </div>
+                <div className="mt-4 space-y-2">
+                  <p className="text-black/70"><strong>Address:</strong> 123 High Street, City, Postcode, UK</p>
+                  <p className="text-black/70"><strong>Parking:</strong> Available nearby</p>
+                  <p className="text-black/70"><strong>Public Transport:</strong> Bus stop 100m away</p>
+                </div>
+              </div>
+
+              {/* Opening Hours */}
+              <div className="bg-gradient-to-br from-[#19395f] to-[#0d2440] rounded-2xl p-8 text-white">
+                <h3 className="text-xl font-semibold mb-6">Opening Hours</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/90">Monday - Friday</span>
+                    <span className="font-semibold">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/90">Saturday</span>
+                    <span className="font-semibold">9:00 AM - 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/90">Sunday</span>
+                    <span className="font-semibold">Closed</span>
+                  </div>
+                  <div className="pt-4 mt-4 border-t border-white/20">
+                    <p className="text-sm text-white/80">Emergency appointments available outside hours</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Contact Options */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50">
+              <h3 className="text-xl font-semibold text-[#19395f] mb-4">Emergency Contact</h3>
+              <p className="text-black/70 mb-4">
+                For urgent eye care needs, please call our CUES service or visit A&E for life-threatening emergencies.
+              </p>
+              <a
+                href="/services/cues"
+                className="inline-block text-[#19395f] hover:text-[#80acc9] font-medium transition-colors"
+              >
+                Learn more about CUES →
+              </a>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50">
+              <h3 className="text-xl font-semibold text-[#19395f] mb-4">Book an Appointment</h3>
+              <p className="text-black/70 mb-4">
+                Ready to schedule your visit? Book online or give us a call to find a convenient time.
+              </p>
+              <a
+                href="/book-appointment"
+                className="inline-block text-[#19395f] hover:text-[#80acc9] font-medium transition-colors"
+              >
+                Book Now →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
+    </div>
+  );
+}
+

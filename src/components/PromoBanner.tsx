@@ -91,14 +91,14 @@ export default function PromoBanner() {
               <div className="relative z-10">
                 <div className="inline-block mb-6">
                   <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-semibold">
-                    🎄 CHRISTMAS OFFER
+                    SPECIAL OFFER
                   </span>
                 </div>
                 <h3 className="text-white text-3xl md:text-4xl font-bold mb-2 leading-tight">
-                  £10 Off
+                  20% Off
                 </h3>
                 <p className="text-white/90 text-lg">
-                  Your Next Visit
+                  All Frames & Lenses
                 </p>
               </div>
 
@@ -112,8 +112,8 @@ export default function PromoBanner() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-sm">Valid on All Services</p>
-                      <p className="text-xs text-white/70">Eye exams, frames & more</p>
+                      <p className="font-semibold text-white text-sm">On All Frames & Lenses</p>
+                      <p className="text-xs text-white/70">Premium designer brands included</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -124,7 +124,7 @@ export default function PromoBanner() {
                     </div>
                     <div>
                       <p className="font-semibold text-white text-sm">No Minimum Purchase</p>
-                      <p className="text-xs text-white/70">Use on any amount</p>
+                      <p className="text-xs text-white/70">Apply to any frame and lens combination</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -134,8 +134,8 @@ export default function PromoBanner() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-sm">Instant Email Delivery</p>
-                      <p className="text-xs text-white/70">Get your code immediately</p>
+                      <p className="font-semibold text-white text-sm">Book Your Appointment</p>
+                      <p className="text-xs text-white/70">Claim your discount today</p>
                     </div>
                   </div>
                 </div>
@@ -151,10 +151,10 @@ export default function PromoBanner() {
                   {/* Header */}
                   <div className="mb-8">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 leading-tight">
-                      Claim Your Exclusive Voucher
+                      Special Offer: 20% Off All Frames & Lenses
                     </h2>
                     <p className="text-lg text-black/70">
-                      Subscribe to our newsletter and receive a <span className="font-bold text-[#19395f]">£10 off</span> voucher for your next eye exam or eyewear purchase.
+                      Subscribe to our newsletter and receive a <span className="font-bold text-[#19395f]">20% discount</span> on all frames and lenses, including premium designer brands.
                     </p>
                   </div>
 
@@ -293,13 +293,13 @@ export default function PromoBanner() {
                         </button>
                       </div>
                       <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full">
-                        <p className="text-white text-xl font-bold">£10 OFF</p>
+                        <p className="text-white text-xl font-bold">20% OFF</p>
                       </div>
                     </div>
                   </div>
 
                   <p className="text-sm text-black/60">
-                    Check your email for details. Valid until Dec 31, 2024.
+                    Check your email for details. Valid on all frames and lenses.
                   </p>
                 </div>
               )}

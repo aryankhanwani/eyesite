@@ -3,6 +3,37 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
+// Shiny button animation styles
+const shinyButtonStyles = `
+  @keyframes shiny {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(200%) translateY(200%) rotate(45deg);
+    }
+  }
+  
+  .shiny-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    animation: shiny 3s infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+`;
+
 const serviceOptions = [
   'Eye Exam',
   'Eyewear Consultation',
@@ -71,7 +102,9 @@ export default function AppointmentForm() {
   };
 
   return (
-    <section className="w-full py-16 md:py-24 bg-[#faf9f6] relative overflow-hidden">
+    <>
+      <style>{shinyButtonStyles}</style>
+      <section className="w-full py-16 md:py-24 bg-[#faf9f6] relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#b6dfe8]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#80acc9]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
@@ -228,7 +261,7 @@ export default function AppointmentForm() {
               <button
                 type="submit"
                 disabled={isSubmitting || submitSuccess}
-                className="group relative w-full cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                className="group relative w-full cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shiny-button"
               >
                 {submitSuccess ? (
                   <span className="flex items-center justify-center gap-2">
@@ -272,32 +305,7 @@ export default function AppointmentForm() {
                     Submitting...
                   </span>
                 ) : (
-                  <>
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-2 h-2 scale-100 rounded-lg bg-white transition-all duration-300 group-hover:scale-[100.8]"></div>
-                      <span className="inline-block whitespace-nowrap transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
-                        Book Appointment
-                      </span>
-                    </div>
-                    <div className="absolute top-0 z-10 flex w-full h-full translate-x-12 items-center justify-center gap-2 text-[#19395f] opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100">
-                      <span className="whitespace-nowrap">Book Appointment</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-arrow-right"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
-                  </>
+                  <span className="inline-block whitespace-nowrap">Book Appointment</span>
                 )}
               </button>
             </form>
@@ -403,6 +411,7 @@ export default function AppointmentForm() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
