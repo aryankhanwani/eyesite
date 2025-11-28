@@ -361,12 +361,12 @@ export default function AppointmentForm() {
             </div>
 
             {/* Trust Badge */}
-            <div className="bg-white rounded-3xl p-6 border border-[#e7e8ea]/50 shadow-sm">
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4 flex-1">
-                  <div className="w-16 h-16 rounded-full bg-[#b6dfe8]/20 flex items-center justify-center flex-shrink-0">
+            <div className="bg-white rounded-3xl p-4 md:p-6 border border-[#e7e8ea]/50 shadow-sm">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-4">
+                <div className="flex items-center gap-3 md:gap-4 flex-1">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#b6dfe8]/20 flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-8 h-8 text-[#19395f]"
+                      className="w-6 h-6 md:w-8 md:h-8 text-[#19395f]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -380,28 +380,28 @@ export default function AppointmentForm() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-semibold text-black">NHS & COO Registered</p>
-                    <p className="text-sm text-black/60">Trusted healthcare provider</p>
+                    <p className="font-semibold text-black text-sm md:text-base">NHS & COO Registered</p>
+                    <p className="text-xs md:text-sm text-black/60">Trusted healthcare provider</p>
                   </div>
                 </div>
                 {/* Logos */}
-                <div className="flex items-center gap-4 flex-shrink-0">
-                  <div className="h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300">
+                <div className="flex items-center justify-center md:justify-end gap-3 md:gap-4 flex-shrink-0 w-full md:w-auto">
+                  <div className="h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300">
                     <Image
                       src="/nhs logo.png"
                       alt="NHS Logo"
                       width={80}
                       height={40}
-                      className="h-10 w-auto object-contain"
+                      className="h-8 md:h-10 w-auto object-contain"
                     />
                   </div>
-                  <div className="h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300">
+                  <div className="h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300">
                     <Image
                       src="/coo_logo_text_white.png"
                       alt="College of Optometrists Logo"
                       width={100}
                       height={40}
-                      className="h-10 w-auto object-contain"
+                      className="h-8 md:h-10 w-auto object-contain"
                     />
                   </div>
                 </div>
