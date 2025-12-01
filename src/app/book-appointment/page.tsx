@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import { businessInfo } from '@/lib/businessInfo';
 
 // Shiny button animation styles
 const shinyButtonStyles = `
@@ -402,8 +403,10 @@ export default function BookAppointmentPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">Call Us Directly</h3>
-                      <p className="text-white/90 text-lg">+44 123 456 7890</p>
-                      <p className="text-white/70 text-sm mt-1">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                      <a href={`tel:${businessInfo.contact.phone}`} className="text-white/90 text-lg hover:text-white transition-colors block">
+                        {businessInfo.contact.phoneDisplay}
+                      </a>
+                      <p className="text-white/70 text-sm mt-1">Mon - Fri: {businessInfo.hours.weekdays}</p>
                     </div>
                   </div>
                 </div>

@@ -45,28 +45,28 @@ interface HeroSlide {
 const heroSlides: HeroSlide[] = [
   {
     id: 1,
-    image: '/hero-1.png',
+    image: '/hero1.png',
     title: 'Clear Vision for a Brighter Future',
     description: 'Expert eye care services, comprehensive eye examinations, and premium eyewear solutions tailored to enhance your vision and protect your eye health.',
     tag: 'Eye Care & Vision',
   },
   {
     id: 2,
-    image: '/hero-2.png',
+    image: '/hero2.png',
     title: 'Comprehensive Eye Examinations',
     description: 'Advanced diagnostic technology for accurate vision assessment and early detection of eye conditions.',
     tag: 'Professional Care',
   },
   {
     id: 3,
-    image: '/hero-3.png',
+    image: '/hero3.png',
     title: 'Premium Eyewear Collection',
     description: 'Stylish frames and lenses from leading brands worldwide, combining fashion with function.',
     tag: 'Eyewear Excellence',
   },
   {
     id: 4,
-    image: '/hero-4.png',
+    image: '/hero4.png',
     title: 'Expert Optometrists',
     description: 'Experienced professionals dedicated to your vision health and personalized eye care solutions.',
     tag: 'Expert Care',

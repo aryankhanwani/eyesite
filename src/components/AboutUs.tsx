@@ -97,18 +97,18 @@ export default function AboutUs() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/5] relative">
                 <Image
-                  src="/about us.png"
+                  src="/about-us.png"
                   alt="Eyesite Opticians team providing expert eye care services"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute inset-0 bg-black/30"></div>
               </div>
 
               {/* Overlaid Text Bubbles */}
-              <div className="absolute top-8 right-8 flex flex-col gap-3 z-10">
+              <div className="absolute bottom-8 right-8 flex flex-col gap-3 z-10">
                 <div className="bg-[#19395f] text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">
                   EXPERT CARE
                 </div>

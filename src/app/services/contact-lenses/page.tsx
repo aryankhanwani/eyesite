@@ -2,6 +2,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppointmentForm from '@/components/AppointmentForm';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Lenses Fitting & Supply',
+  description: 'Expert contact lens fitting and supply in Leeds. Daily, monthly, toric, and multifocal lenses. Professional aftercare and ongoing support. Book your fitting consultation at Eyesite Opticians.',
+  keywords: ['contact lenses Leeds', 'contact lens fitting Leeds', 'daily lenses', 'monthly lenses', 'toric lenses Leeds', 'multifocal contact lenses'],
+};
 
 export default function ContactLensesPage() {
   return (

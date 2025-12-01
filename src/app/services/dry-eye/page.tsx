@@ -2,6 +2,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppointmentForm from '@/components/AppointmentForm';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Dry Eye Treatment Clinic',
+  description: 'Specialist dry eye treatment in Leeds. Advanced diagnostics and personalized treatment plans including IPL therapy. Relief from dry, irritated, watery eyes at Eyesite Opticians.',
+  keywords: ['dry eye treatment Leeds', 'dry eye clinic Leeds', 'IPL therapy Leeds', 'eye irritation treatment', 'watery eyes treatment', 'blepharitis treatment Leeds'],
+};
 
 export default function DryEyePage() {
   return (

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { businessInfo } from '@/lib/businessInfo';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -183,28 +184,28 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#about" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/about-us" className="text-white/70 hover:text-white transition-colors text-sm">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/#services" className="text-white/70 hover:text-white transition-colors text-sm">
                     Our Services
                   </a>
                 </li>
                 <li>
-                  <a href="#eyewear" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/#eyewear" className="text-white/70 hover:text-white transition-colors text-sm">
                     Designer Eyewear
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" className="text-white/70 hover:text-white transition-colors text-sm">
-                    Testimonials
+                  <a href="/blog" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">
-                    Blog
+                  <a href="/book-appointment" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Book Appointment
                   </a>
                 </li>
               </ul>
@@ -215,27 +216,27 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-4">Services</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/services/eye-exams" className="text-white/70 hover:text-white transition-colors text-sm">
                     Eye Examinations
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/services/eyewear" className="text-white/70 hover:text-white transition-colors text-sm">
                     Eyewear Collection
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/services/contact-lenses" className="text-white/70 hover:text-white transition-colors text-sm">
                     Contact Lens Fitting
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/services/cues" className="text-white/70 hover:text-white transition-colors text-sm">
                     CUES Service
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                  <a href="/services/dry-eye" className="text-white/70 hover:text-white transition-colors text-sm">
                     Dry Eye Treatment
                   </a>
                 </li>
@@ -267,8 +268,8 @@ export default function Footer() {
                     />
                   </svg>
                   <span className="text-white/70 text-sm">
-                    123 High Street<br />
-                    London, UK
+                    {businessInfo.contact.address.street}<br />
+                    {businessInfo.contact.address.city}, {businessInfo.contact.address.postcode}
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
@@ -285,8 +286,8 @@ export default function Footer() {
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  <a href="tel:+441234567890" className="text-white/70 hover:text-white transition-colors text-sm">
-                    +44 123 456 7890
+                  <a href={`tel:${businessInfo.contact.phone}`} className="text-white/70 hover:text-white transition-colors text-sm">
+                    {businessInfo.contact.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
@@ -303,8 +304,8 @@ export default function Footer() {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  <a href="mailto:info@eyesiteopticians.com" className="text-white/70 hover:text-white transition-colors text-sm">
-                    info@eyesiteopticians.com
+                  <a href={`mailto:${businessInfo.contact.email}`} className="text-white/70 hover:text-white transition-colors text-sm">
+                    {businessInfo.contact.email}
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
@@ -322,7 +323,8 @@ export default function Footer() {
                     />
                   </svg>
                   <span className="text-white/70 text-sm">
-                    Mon - Sat: 9:00 AM - 6:00 PM
+                    Mon - Fri: {businessInfo.hours.weekdays}<br />
+                    Sat: {businessInfo.hours.saturday}
                   </span>
                 </li>
               </ul>
@@ -335,7 +337,7 @@ export default function Footer() {
           <div className="max-w-7xl mx-auto px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/60 text-sm text-center md:text-left">
-                © {new Date().getFullYear()} Eyesite Opticians. All rights reserved.
+                © {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
                 <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">

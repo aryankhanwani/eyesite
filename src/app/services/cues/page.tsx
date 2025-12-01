@@ -2,6 +2,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppointmentForm from '@/components/AppointmentForm';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'CUES - Urgent Eye Care Service',
+  description: 'NHS-funded urgent eye care service in Leeds. Same-day appointments for eye emergencies, infections, injuries, and sudden vision changes. Fast professional treatment at Eyesite Opticians.',
+  keywords: ['CUES Leeds', 'urgent eye care Leeds', 'eye emergency Leeds', 'NHS eye emergency', 'eye infection treatment', 'red eye treatment Leeds'],
+};
 
 export default function CUESPage() {
   return (

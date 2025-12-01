@@ -2,6 +2,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppointmentForm from '@/components/AppointmentForm';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Comprehensive Eye Exams',
+  description: 'Professional eye examinations in Leeds using advanced OCT technology. NHS & private appointments available. Comprehensive health checks, prescription updates, and early disease detection at Eyesite Opticians.',
+  keywords: ['eye exam Leeds', 'eye test Leeds', 'NHS eye test', 'OCT scan', 'comprehensive eye examination', 'optometrist Leeds'],
+};
 
 export default function EyeExamsPage() {
   return (

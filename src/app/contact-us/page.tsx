@@ -1,6 +1,17 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import { businessInfo } from '@/lib/businessInfo';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: `Get in touch with ${businessInfo.name}. Located at ${businessInfo.contact.address.full}. Call us at ${businessInfo.contact.phoneDisplay} or email ${businessInfo.contact.email}. Expert eye care services in Leeds.`,
+  openGraph: {
+    title: 'Contact Us | Eyesite Opticians Leeds',
+    description: `Contact ${businessInfo.name} for expert eye care services in Leeds. Visit us, call, or email for appointments and inquiries.`,
+  },
+};
 
 export default function ContactUsPage() {
   return (
@@ -50,8 +61,10 @@ export default function ContactUsPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-[#19395f] mb-3">Phone</h3>
-              <p className="text-lg text-black/70 mb-2">+44 123 456 7890</p>
-              <p className="text-sm text-black/60">Mon - Sat: 9:00 AM - 6:00 PM</p>
+              <a href={`tel:${businessInfo.contact.phone}`} className="text-lg text-black/70 hover:text-[#19395f] transition-colors mb-2 block">
+                {businessInfo.contact.phoneDisplay}
+              </a>
+              <p className="text-sm text-black/60">Mon - Fri: {businessInfo.hours.weekdays}</p>
             </div>
 
             {/* Email */}
@@ -62,7 +75,9 @@ export default function ContactUsPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-[#19395f] mb-3">Email</h3>
-              <p className="text-lg text-black/70 mb-2">info@eyesiteopticians.com</p>
+              <a href={`mailto:${businessInfo.contact.email}`} className="text-lg text-black/70 hover:text-[#19395f] transition-colors mb-2 block">
+                {businessInfo.contact.email}
+              </a>
               <p className="text-sm text-black/60">We'll respond within 24 hours</p>
             </div>
 
@@ -75,8 +90,8 @@ export default function ContactUsPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-[#19395f] mb-3">Visit Us</h3>
-              <p className="text-lg text-black/70 mb-2">123 High Street</p>
-              <p className="text-sm text-black/60">City, Postcode, UK</p>
+              <p className="text-lg text-black/70 mb-2">{businessInfo.contact.address.street}</p>
+              <p className="text-sm text-black/60">{businessInfo.contact.address.city}, {businessInfo.contact.address.postcode}</p>
             </div>
           </div>
 
@@ -171,19 +186,30 @@ export default function ContactUsPage() {
               {/* Map Placeholder */}
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50">
                 <h3 className="text-xl font-semibold text-[#19395f] mb-4">Find Us</h3>
-                <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] aspect-[4/3] flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 text-[#19395f]/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p className="text-black/60">Map integration can be added here</p>
-                  </div>
+                <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] aspect-[4/3]">
+                  <iframe
+                    src={businessInfo.google.embedUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${businessInfo.name} Location Map`}
+                  />
                 </div>
                 <div className="mt-4 space-y-2">
-                  <p className="text-black/70"><strong>Address:</strong> 123 High Street, City, Postcode, UK</p>
+                  <p className="text-black/70"><strong>Address:</strong> {businessInfo.contact.address.full}</p>
                   <p className="text-black/70"><strong>Parking:</strong> Available nearby</p>
                   <p className="text-black/70"><strong>Public Transport:</strong> Bus stop 100m away</p>
+                  <a 
+                    href={businessInfo.google.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-3 text-[#19395f] hover:text-[#80acc9] font-medium transition-colors"
+                  >
+                    Open in Google Maps →
+                  </a>
                 </div>
               </div>
 
@@ -193,18 +219,18 @@ export default function ContactUsPage() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-white/90">Monday - Friday</span>
-                    <span className="font-semibold">9:00 AM - 6:00 PM</span>
+                    <span className="font-semibold">{businessInfo.hours.weekdays}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-white/90">Saturday</span>
-                    <span className="font-semibold">9:00 AM - 5:00 PM</span>
+                    <span className="font-semibold">{businessInfo.hours.saturday}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-white/90">Sunday</span>
-                    <span className="font-semibold">Closed</span>
+                    <span className="font-semibold">{businessInfo.hours.sunday}</span>
                   </div>
                   <div className="pt-4 mt-4 border-t border-white/20">
-                    <p className="text-sm text-white/80">Emergency appointments available outside hours</p>
+                    <p className="text-sm text-white/80">{businessInfo.hours.note}</p>
                   </div>
                 </div>
               </div>

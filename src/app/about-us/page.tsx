@@ -1,6 +1,16 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description: 'Learn about Eyesite Opticians Leeds. Expert optometrists with 15+ years of experience, serving 50,000+ patients. NHS & COO registered. State-of-the-art equipment and personalized eye care services in Halton, Leeds.',
+  openGraph: {
+    title: 'About Eyesite Opticians | Expert Eye Care Team in Leeds',
+    description: 'Meet our experienced team of optometrists dedicated to providing exceptional eye care services in Leeds.',
+  },
+};
 
 export default function AboutUsPage() {
   return (

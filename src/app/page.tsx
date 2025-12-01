@@ -5,10 +5,35 @@ import PromoBanner from '@/components/PromoBanner';
 import AboutUs from '@/components/AboutUs';
 import Services from '@/components/Services';
 import DesignerEyewear from '@/components/DesignerEyewear';
+import VoucherPartners from '@/components/VoucherPartners';
 import Testimonials from '@/components/Testimonials';
 import AppointmentForm from '@/components/AppointmentForm';
 import Blogs from '@/components/Blogs';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Eyesite Opticians | Expert Eye Care in Leeds',
+  description: 'Professional optometry services in Leeds. Comprehensive eye exams, designer eyewear, contact lenses, dry eye treatment, CUES service. NHS & private appointments. 4.9★ Google rating. Located in Halton, Leeds.',
+  keywords: [
+    'opticians Leeds',
+    'eye test Leeds',
+    'designer glasses Leeds',
+    'contact lenses Leeds',
+    'Halton opticians',
+    'Eyesite Opticians',
+    'NHS eye test Leeds',
+    'private opticians Leeds',
+    'dry eye treatment',
+    'CUES service Leeds'
+  ],
+  openGraph: {
+    title: 'Eyesite Opticians | Expert Eye Care in Leeds',
+    description: 'Professional optometry services in Leeds. Book your eye exam today. NHS & private appointments available.',
+    url: '/',
+    type: 'website',
+  },
+};
 
 export default function Home() {
   return (
@@ -20,6 +45,7 @@ export default function Home() {
       <Services />
       <PromoBanner />
       <DesignerEyewear />
+      <VoucherPartners />
       <Testimonials />
       <AppointmentForm />
       <Blogs />

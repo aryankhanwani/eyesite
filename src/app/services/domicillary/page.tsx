@@ -2,6 +2,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppointmentForm from '@/components/AppointmentForm';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home Eye Testing Service',
+  description: 'Professional home eye tests in Leeds for those unable to visit our practice. Comprehensive examinations, eyewear selection, and aftercare in your home. NHS-funded service available.',
+  keywords: ['home eye test Leeds', 'domiciliary eye test Leeds', 'mobile optician Leeds', 'home visit eye test', 'NHS home eye test', 'care home eye test Leeds'],
+};
 
 export default function DomicillaryPage() {
   return (

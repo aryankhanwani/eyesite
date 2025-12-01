@@ -64,10 +64,12 @@ export default function Header() {
         <Image
           src="/eyesite-logo.png"
           alt="Eyesite Opticians Logo"
-          width={160}
-          height={50}
+          width={240}
+          height={80}
+          quality={100}
           className="h-8 md:h-10 w-auto object-contain"
           priority
+          style={{ width: 'auto', height: 'auto', maxHeight: '2.5rem' }}
         />
       </a>
 
@@ -258,16 +260,16 @@ export default function Header() {
           About Us
         </a>
         <a
+          href="/blog"
+          className="text-[#19395f] hover:text-[#80acc9] transition-colors font-medium"
+        >
+          Blog
+        </a>
+        <a
           href="/contact-us"
           className="text-[#19395f] hover:text-[#80acc9] transition-colors font-medium"
         >
           Contact
-        </a>
-        <a
-          href="#eyecare"
-          className="text-[#19395f] hover:text-[#80acc9] transition-colors font-medium"
-        >
-          Eye Care
         </a>
       </div>
 
@@ -369,18 +371,18 @@ export default function Header() {
               About Us
             </a>
             <a
+              href="/blog"
+              className="block text-[#19395f] hover:text-[#80acc9] transition-colors font-medium py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Blog
+            </a>
+            <a
               href="/contact-us"
               className="block text-[#19395f] hover:text-[#80acc9] transition-colors font-medium py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
-            </a>
-            <a
-              href="#eyecare"
-              className="block text-[#19395f] hover:text-[#80acc9] transition-colors font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Eye Care
             </a>
             <a
               href="/book-appointment"

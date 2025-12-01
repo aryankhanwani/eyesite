@@ -2,6 +2,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppointmentForm from '@/components/AppointmentForm';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Designer Eyewear Collection',
+  description: 'Premium designer frames and sunglasses in Leeds. Ray-Ban, Tom Ford, Gucci, Saint Laurent, Hugo Boss & more. Expert fitting service and style consultation at Eyesite Opticians Halton.',
+  keywords: ['designer glasses Leeds', 'designer frames Leeds', 'Ray-Ban Leeds', 'Tom Ford glasses', 'luxury eyewear Leeds', 'prescription sunglasses'],
+};
 
 export default function EyewearPage() {
   return (
