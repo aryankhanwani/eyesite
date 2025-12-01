@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import { useRef, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 
 interface Brand {
   id: number;
@@ -58,8 +58,8 @@ const brands: Brand[] = [
 
 export default function DesignerEyewear() {
   return (
-    <section className="w-full py-16 md:py-24 bg-[#f4f6f8]">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="w-full py-12 md:py-16 lg:py-24 bg-[#f4f6f8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Tag */}
         <div className="mb-4">
           <span className="inline-block bg-[#19395f] text-white px-4 py-1.5 rounded-full text-sm font-medium">
@@ -68,25 +68,15 @@ export default function DesignerEyewear() {
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-black mb-12 leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-black mb-8 md:mb-12 leading-tight">
           Premium Designer Brands
         </h2>
 
-        {/* Brands Grid - 7 items: 3 on top, 4 below */}
-        <div className="space-y-6 md:space-y-8">
-          {/* Top Row - 3 Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            {brands.slice(0, 3).map((brand) => (
-              <BrandCard key={brand.id} brand={brand} isLarge={true} />
-            ))}
-          </div>
-          
-          {/* Bottom Row - 4 Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {brands.slice(3, 7).map((brand) => (
-              <BrandCard key={brand.id} brand={brand} isLarge={false} />
-            ))}
-          </div>
+        {/* Brands Grid - Responsive: 2 cols mobile, 3 cols tablet, proper layout desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+          {brands.map((brand) => (
+            <BrandCard key={brand.id} brand={brand} isLarge={false} />
+          ))}
         </div>
       </div>
     </section>
@@ -99,8 +89,36 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
   const frontRef = useRef<HTMLDivElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const [gsapLoaded, setGsapLoaded] = useState(false);
+  const [gsapLib, setGsapLib] = useState<any>(null);
 
   useEffect(() => {
+    // Lazy load GSAP only when component is in view
+    const loadGsap = async () => {
+      const gsap = await import('gsap');
+      setGsapLib(gsap.default);
+      setGsapLoaded(true);
+    };
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !gsapLoaded) {
+          loadGsap();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [gsapLoaded]);
+
+  useEffect(() => {
+    if (!gsapLoaded || !gsapLib) return;
+    
     const card = cardRef.current;
     const cardInner = cardInnerRef.current;
     const front = frontRef.current;
@@ -110,13 +128,13 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
     if (!card || !cardInner || !front || !back || !logo) return;
 
     // Set initial perspective
-    gsap.set(card, { perspective: 1000 });
-    gsap.set(cardInner, { transformStyle: 'preserve-3d' });
-    gsap.set(front, { backfaceVisibility: 'hidden', transform: 'rotateY(0deg)' });
-    gsap.set(back, { backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' });
+    gsapLib.set(card, { perspective: 1000 });
+    gsapLib.set(cardInner, { transformStyle: 'preserve-3d' });
+    gsapLib.set(front, { backfaceVisibility: 'hidden', transform: 'rotateY(0deg)' });
+    gsapLib.set(back, { backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' });
 
     const handleMouseEnter = () => {
-      const tl = gsap.timeline();
+      const tl = gsapLib.timeline();
 
       // Card scale up slightly
       tl.to(card, {
@@ -155,7 +173,7 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
     };
 
     const handleMouseLeave = () => {
-      const tl = gsap.timeline();
+      const tl = gsapLib.timeline();
 
       // Card scale reset
       tl.to(card, {
@@ -188,12 +206,12 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
       card.removeEventListener('mouseenter', handleMouseEnter);
       card.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }, [gsapLoaded, gsapLib]);
 
   return (
     <div
       ref={cardRef}
-      className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer border border-[#e7e8ea]/50 shadow-lg"
+      className="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#e7e8ea]/50 shadow-lg"
       style={{ perspective: '1000px' }}
     >
       <div
@@ -204,16 +222,12 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
         {/* Front Side - Logo */}
         <div
           ref={frontRef}
-          className="absolute inset-0 bg-white rounded-2xl flex items-center justify-center p-4 md:p-6 border border-[#e7e8ea]/50"
+          className="absolute inset-0 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center p-3 sm:p-4 md:p-6 border border-[#e7e8ea]/50"
           style={{ backfaceVisibility: 'hidden' }}
         >
           <div
             ref={logoRef}
-            className={`relative w-full ${
-              isLarge 
-                ? 'h-40 md:h-52 lg:h-64' 
-                : 'h-32 md:h-40 lg:h-48'
-            }`}
+            className="relative w-full h-24 sm:h-32 md:h-40 lg:h-48"
             style={{ filter: 'grayscale(100%)' }}
           >
             <Image
@@ -222,6 +236,8 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
               fill
               className="object-contain"
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              loading="lazy"
+              quality={75}
             />
           </div>
         </div>
@@ -229,7 +245,7 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
         {/* Back Side - Product Image */}
         <div
           ref={backRef}
-          className="absolute inset-0 rounded-2xl overflow-hidden"
+          className="absolute inset-0 rounded-xl sm:rounded-2xl overflow-hidden"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
           <Image
@@ -238,6 +254,8 @@ function BrandCard({ brand, isLarge }: { brand: Brand; isLarge: boolean }) {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            loading="lazy"
+            quality={75}
           />
           <div className="absolute inset-0 bg-black/20"></div>
         </div>

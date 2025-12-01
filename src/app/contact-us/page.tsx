@@ -96,15 +96,15 @@ export default function ContactUsPage() {
           </div>
 
           {/* Contact Form & Map Section */}
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-[#e7e8ea]/50">
-              <h2 className="text-3xl md:text-4xl font-medium text-[#19395f] mb-6">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-[#e7e8ea]/50">
+              <h2 className="text-2xl md:text-3xl font-medium text-[#19395f] mb-5">
                 Send Us a Message
               </h2>
-              <form className="space-y-6">
+              <form className="space-y-4">
                 <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-[#19395f] mb-2">
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-[#19395f] mb-1.5">
                     Full Name *
                   </label>
                   <input
@@ -112,12 +112,12 @@ export default function ContactUsPage() {
                     id="contact-name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-[#19395f] mb-2">
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-[#19395f] mb-1.5">
                     Email Address *
                   </label>
                   <input
@@ -125,31 +125,31 @@ export default function ContactUsPage() {
                     id="contact-email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
                     placeholder="john@example.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-phone" className="block text-sm font-medium text-[#19395f] mb-2">
+                  <label htmlFor="contact-phone" className="block text-sm font-medium text-[#19395f] mb-1.5">
                     Phone Number
                   </label>
                   <input
                     type="tel"
                     id="contact-phone"
                     name="phone"
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
                     placeholder="+44 123 456 7890"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-subject" className="block text-sm font-medium text-[#19395f] mb-2">
+                  <label htmlFor="contact-subject" className="block text-sm font-medium text-[#19395f] mb-1.5">
                     Subject *
                   </label>
                   <select
                     id="contact-subject"
                     name="subject"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
                   >
                     <option value="">Select a subject</option>
                     <option value="appointment">Book Appointment</option>
@@ -160,21 +160,21 @@ export default function ContactUsPage() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#19395f] mb-2">
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#19395f] mb-1.5">
                     Message *
                   </label>
                   <textarea
                     id="contact-message"
                     name="message"
-                    rows={5}
+                    rows={4}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40 resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40 resize-none"
                     placeholder="Your message here..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="group relative w-full cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300"
+                  className="group relative w-full cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300"
                 >
                   <span className="inline-block whitespace-nowrap">Send Message</span>
                 </button>
@@ -182,11 +182,11 @@ export default function ContactUsPage() {
             </div>
 
             {/* Map & Additional Info */}
-            <div className="space-y-6">
+            <div className="space-y-5">
               {/* Map Placeholder */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#e7e8ea]/50">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-4">Find Us</h3>
-                <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] aspect-[4/3]">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#e7e8ea]/50">
+                <h3 className="text-xl font-semibold text-[#19395f] mb-3">Find Us</h3>
+                <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] h-64">
                   <iframe
                     src={businessInfo.google.embedUrl}
                     width="100%"
@@ -198,7 +198,7 @@ export default function ContactUsPage() {
                     title={`${businessInfo.name} Location Map`}
                   />
                 </div>
-                <div className="mt-4 space-y-2">
+                <div className="mt-3 space-y-1.5 text-sm">
                   <p className="text-black/70"><strong>Address:</strong> {businessInfo.contact.address.full}</p>
                   <p className="text-black/70"><strong>Parking:</strong> Available nearby</p>
                   <p className="text-black/70"><strong>Public Transport:</strong> Bus stop 100m away</p>
@@ -206,7 +206,7 @@ export default function ContactUsPage() {
                     href={businessInfo.google.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-3 text-[#19395f] hover:text-[#80acc9] font-medium transition-colors"
+                    className="inline-block mt-2 text-[#19395f] hover:text-[#80acc9] font-medium transition-colors"
                   >
                     Open in Google Maps →
                   </a>
@@ -214,9 +214,9 @@ export default function ContactUsPage() {
               </div>
 
               {/* Opening Hours */}
-              <div className="bg-gradient-to-br from-[#19395f] to-[#0d2440] rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-semibold mb-6">Opening Hours</h3>
-                <div className="space-y-3">
+              <div className="bg-gradient-to-br from-[#19395f] to-[#0d2440] rounded-2xl p-6 text-white">
+                <h3 className="text-xl font-semibold mb-4">Opening Hours</h3>
+                <div className="space-y-2.5">
                   <div className="flex justify-between items-center">
                     <span className="text-white/90">Monday - Friday</span>
                     <span className="font-semibold">{businessInfo.hours.weekdays}</span>
@@ -229,7 +229,7 @@ export default function ContactUsPage() {
                     <span className="text-white/90">Sunday</span>
                     <span className="font-semibold">{businessInfo.hours.sunday}</span>
                   </div>
-                  <div className="pt-4 mt-4 border-t border-white/20">
+                  <div className="pt-3 mt-3 border-t border-white/20">
                     <p className="text-sm text-white/80">{businessInfo.hours.note}</p>
                   </div>
                 </div>

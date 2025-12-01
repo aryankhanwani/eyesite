@@ -4,7 +4,6 @@ import TrustBadges from '@/components/TrustBadges';
 import PromoBanner from '@/components/PromoBanner';
 import AboutUs from '@/components/AboutUs';
 import Services from '@/components/Services';
-import DesignerEyewear from '@/components/DesignerEyewear';
 import VoucherPartners from '@/components/VoucherPartners';
 import Testimonials from '@/components/Testimonials';
 import AppointmentForm from '@/components/AppointmentForm';
@@ -44,7 +43,6 @@ export default function Home() {
       <AboutUs />
       <Services />
       <PromoBanner />
-      <DesignerEyewear />
       <VoucherPartners />
       <Testimonials />
       <AppointmentForm />

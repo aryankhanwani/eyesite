@@ -76,66 +76,66 @@ export default function PromoBanner() {
   return (
     <>
       <style>{spotlightStyle}</style>
-      <section className="w-full py-16 md:py-20 bg-[#faf9f6] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8">
+      <section className="w-full py-12 md:py-16 lg:py-20 bg-[#faf9f6] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Asymmetric Layout with Side Panel */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Side - Visual Panel (3 columns) */}
-          <div className="lg:col-span-4 relative">
-            <div className="relative bg-gradient-to-br from-[#19395f] via-[#0d2440] to-[#19395f] rounded-3xl p-8 md:p-10 lg:p-12 aspect-square flex flex-col justify-between overflow-hidden shadow-xl spotlight-effect">
+          <div className="lg:col-span-4 relative flex">
+            <div className="relative bg-gradient-to-br from-[#19395f] via-[#0d2440] to-[#19395f] rounded-2xl lg:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 w-full flex flex-col justify-between overflow-hidden shadow-xl spotlight-effect">
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="inline-block mb-6">
-                  <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-semibold">
+                <div className="inline-block mb-4 sm:mb-6">
+                  <span className="bg-white/20 backdrop-blur-sm text-white px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-semibold">
                     SPECIAL OFFER
                   </span>
                 </div>
-                <h3 className="text-white text-3xl md:text-4xl font-bold mb-2 leading-tight">
+                <h3 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight">
                   20% Off
                 </h3>
-                <p className="text-white/90 text-lg">
-                  All Frames & Lenses
+                <p className="text-white/90 text-base sm:text-lg">
+                  All Frames
                 </p>
               </div>
 
               {/* Features with Tickmarks */}
-              <div className="relative z-10 mt-auto">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="relative z-10 mt-6 sm:mt-auto">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-start gap-2.5 sm:gap-3">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-sm">On All Frames & Lenses</p>
-                      <p className="text-xs text-white/70">Premium designer brands included</p>
+                      <p className="font-semibold text-white text-xs sm:text-sm">On All Frames</p>
+                      <p className="text-xs text-white/70 hidden sm:block">Premium designer brands included</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-start gap-2.5 sm:gap-3">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-sm">No Minimum Purchase</p>
-                      <p className="text-xs text-white/70">Apply to any frame and lens combination</p>
+                      <p className="font-semibold text-white text-xs sm:text-sm">No Minimum Purchase</p>
+                      <p className="text-xs text-white/70 hidden sm:block">Valid on all frame styles</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-start gap-2.5 sm:gap-3">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-sm">Book Your Appointment</p>
-                      <p className="text-xs text-white/70">Claim your discount today</p>
+                      <p className="font-semibold text-white text-xs sm:text-sm">Book Your Appointment</p>
+                      <p className="text-xs text-white/70 hidden sm:block">Claim your discount today</p>
                     </div>
                   </div>
                 </div>
@@ -144,27 +144,27 @@ export default function PromoBanner() {
           </div>
 
           {/* Right Side - Form Content (8 columns) */}
-          <div className="lg:col-span-8">
-            <div className="bg-white rounded-3xl p-8 md:p-10 lg:p-12 shadow-xl border border-[#e7e8ea]/50">
+          <div className="lg:col-span-8 flex">
+            <div className="bg-white rounded-2xl lg:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#e7e8ea]/50 w-full flex flex-col">
               {!isSuccess ? (
-                <>
+                <div className="flex flex-col h-full">
                   {/* Header */}
-                  <div className="mb-8">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 leading-tight">
-                      Special Offer: 20% Off All Frames & Lenses
+                  <div className="mb-6 sm:mb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+                      Special Offer: 20% Off All Frames
                     </h2>
-                    <p className="text-lg text-black/70">
-                      Subscribe to our newsletter and receive a <span className="font-bold text-[#19395f]">20% discount</span> on all frames and lenses, including premium designer brands.
+                    <p className="text-base sm:text-lg text-black/70">
+                      Subscribe to our newsletter and receive a <span className="font-bold text-[#19395f]">20% discount</span> on all frames, including premium designer brands.
                     </p>
                   </div>
 
                   {/* Form */}
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 flex-1 flex flex-col justify-end">
                     <div>
-                      <label htmlFor="promo-email" className="block text-sm font-semibold text-[#19395f] mb-3">
+                      <label htmlFor="promo-email" className="block text-sm font-semibold text-[#19395f] mb-2 sm:mb-3">
                         Email Address
                       </label>
-                      <div className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                         <input
                           type="email"
                           id="promo-email"
@@ -172,12 +172,12 @@ export default function PromoBanner() {
                           onChange={(e) => setEmail(e.target.value)}
                           required
                           placeholder="your.email@example.com"
-                          className="flex-1 px-6 py-4 rounded-xl border-2 border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40 text-base bg-white"
+                          className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40 text-sm sm:text-base bg-white"
                         />
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="group relative w-full sm:w-auto cursor-pointer overflow-hidden rounded-xl border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-4 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 whitespace-nowrap"
+                          className="group relative w-full sm:w-auto cursor-pointer overflow-hidden rounded-xl border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3 sm:py-4 px-6 sm:px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 whitespace-nowrap"
                         >
                           {isSubmitting ? (
                             <span className="flex items-center justify-center gap-2">
@@ -238,13 +238,13 @@ export default function PromoBanner() {
                       By subscribing, you agree to receive marketing emails. Unsubscribe anytime.
                     </p>
                   </form>
-                </>
+                </div>
               ) : (
-                <div className="text-center">
-                  <div className="mb-8">
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="text-center flex flex-col h-full justify-center">
+                  <div className="mb-6 sm:mb-8">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                       <svg
-                        className="w-10 h-10 text-green-600"
+                        className="w-8 h-8 sm:w-10 sm:h-10 text-green-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -257,28 +257,28 @@ export default function PromoBanner() {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-3xl font-bold text-[#19395f] mb-3">Success!</h3>
-                    <p className="text-lg text-black/70 mb-8">Your voucher code has been sent to your email.</p>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-[#19395f] mb-2 sm:mb-3">Success!</h3>
+                    <p className="text-base sm:text-lg text-black/70 mb-6 sm:mb-8">Your voucher code has been sent to your email.</p>
                   </div>
 
                   {/* Voucher Code Display */}
-                  <div className="bg-gradient-to-r from-[#19395f] to-[#80acc9] rounded-2xl p-8 mb-6 relative overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#19395f] to-[#80acc9] rounded-2xl p-6 sm:p-8 mb-4 sm:mb-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                     <div className="relative z-10">
-                      <p className="text-white/90 text-sm mb-4 font-medium uppercase tracking-wide">Your Voucher Code</p>
-                      <div className="flex items-center justify-center gap-4 mb-4">
-                        <code className="text-3xl md:text-4xl font-bold text-white tracking-wider font-mono">
+                      <p className="text-white/90 text-xs sm:text-sm mb-3 sm:mb-4 font-medium uppercase tracking-wide">Your Voucher Code</p>
+                      <div className="flex items-center justify-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+                        <code className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wider font-mono">
                           {voucherCode}
                         </code>
                         <button
                           onClick={() => {
                             navigator.clipboard.writeText(voucherCode);
                           }}
-                          className="p-3 hover:bg-white/20 rounded-xl transition-colors"
+                          className="p-2 sm:p-3 hover:bg-white/20 rounded-xl transition-colors"
                           title="Copy code"
                         >
                           <svg
-                            className="w-6 h-6 text-white"
+                            className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -292,14 +292,14 @@ export default function PromoBanner() {
                           </svg>
                         </button>
                       </div>
-                      <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full">
-                        <p className="text-white text-xl font-bold">20% OFF</p>
+                      <div className="inline-block bg-white/20 backdrop-blur-sm px-4 sm:px-6 py-1.5 sm:py-2 rounded-full">
+                        <p className="text-white text-lg sm:text-xl font-bold">20% OFF</p>
                       </div>
                     </div>
                   </div>
 
                   <p className="text-sm text-black/60">
-                    Check your email for details. Valid on all frames and lenses.
+                    Check your email for details. Valid on all frames.
                   </p>
                 </div>
               )}

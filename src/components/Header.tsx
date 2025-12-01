@@ -60,21 +60,35 @@ export default function Header() {
   const NavContent = ({ showMobileMenu = false }: { showMobileMenu?: boolean }) => (
     <>
       {/* Logo */}
-      <a href="/" className="flex items-center cursor-pointer">
+      <a href="/" className="flex items-center gap-2 cursor-pointer">
+        {/* Favicon Icon */}
+        <Image
+          src="/logo-icon.png"
+          alt="Eyesite Icon"
+          width={48}
+          height={48}
+          quality={100}
+          className="h-6 w-6 sm:h-12 sm:w-12 min-[900px]:h-16 min-[900px]:w-16 object-contain"
+          priority
+          loading="eager"
+          fetchPriority="high"
+        />
+        {/* Main Logo */}
         <Image
           src="/eyesite-logo.png"
           alt="Eyesite Opticians Logo"
           width={240}
           height={80}
           quality={100}
-          className="h-8 md:h-10 w-auto object-contain"
+          className="h-5 sm:h-6 min-[900px]:h-9 w-auto object-contain"
           priority
-          style={{ width: 'auto', height: 'auto', maxHeight: '2.5rem' }}
+          loading="eager"
+          fetchPriority="high"
         />
       </a>
 
       {/* Desktop Navigation Links */}
-      <div className="hidden md:flex items-center gap-8">
+      <div className="hidden min-[900px]:flex items-center gap-8">
         <div 
           className="relative"
           onMouseEnter={() => setIsServicesOpen(true)}
@@ -104,14 +118,14 @@ export default function Header() {
           
           {/* Services Dropdown */}
           <div
-            className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15),0_8px_24px_rgba(0,0,0,0.1)] border border-[#e7e8ea]/50 overflow-hidden transition-all duration-300 ease-out z-50 ${
+            className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[calc(100vw-2rem)] max-w-[720px] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15),0_8px_24px_rgba(0,0,0,0.1)] border border-[#e7e8ea]/50 overflow-hidden transition-all duration-300 ease-out z-50 ${
               isServicesOpen
                 ? 'opacity-100 translate-y-0 pointer-events-auto'
                 : 'opacity-0 -translate-y-2 pointer-events-none'
             }`}
           >
-            <div className="p-6">
-              <div className="grid grid-cols-3 gap-3">
+            <div className="p-4 lg:p-6">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                 <a
                   href="/services/eye-exams"
                   className="group relative overflow-hidden rounded-xl hover:bg-[#f4f6f8] transition-all duration-300 border border-[#e7e8ea]/30 hover:border-[#19395f]/20 hover:shadow-lg"
@@ -275,7 +289,7 @@ export default function Header() {
 
       {/* Mobile Hamburger Button */}
       <button
-        className="md:hidden flex flex-col gap-1.5 p-2"
+        className="min-[900px]:hidden flex flex-col gap-1.5 p-2"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle menu"
       >
@@ -291,13 +305,13 @@ export default function Header() {
       </button>
 
       {/* Desktop CTA Button */}
-      <a href="/book-appointment" className="hidden md:block group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-2 px-5 text-sm md:text-base text-center font-semibold text-white hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 shiny-button">
+      <a href="/book-appointment" className="hidden min-[900px]:block group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-2 px-5 text-sm lg:text-base text-center font-semibold text-white hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 shiny-button">
         <span className="inline-block whitespace-nowrap">Book Appointment</span>
       </a>
 
       {/* Mobile Menu */}
       {showMobileMenu && (
-        <div className={`md:hidden absolute top-full left-0 right-0 mt-2 bg-white border border-[#e7e8ea] rounded-2xl shadow-lg transition-all duration-300 z-50 ${
+        <div className={`min-[900px]:hidden absolute top-full left-0 right-0 mt-2 bg-white border border-[#e7e8ea] rounded-2xl shadow-lg transition-all duration-300 z-50 ${
           isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}>
           <div className="px-6 py-4 space-y-4">
@@ -402,7 +416,7 @@ export default function Header() {
       <style>{shinyButtonStyles}</style>
       <header className="fixed top-0 left-0 right-0 z-50 w-full">
       {/* Full-width navbar - shown when not scrolled */}
-      <nav className={`relative w-full bg-white px-4 md:px-8 lg:px-12 py-3 md:py-4 lg:py-5 transition-all duration-500 ease-in-out ${
+      <nav className={`relative w-full bg-white px-4 lg:px-8 xl:px-12 py-3 lg:py-4 xl:py-5 transition-all duration-500 ease-in-out ${
         isScrolled ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'
       }`}>
         <div className="max-w-[1280px] mx-auto flex items-center justify-between">
@@ -411,7 +425,7 @@ export default function Header() {
       </nav>
 
       {/* Rounded navbar - slides down when scrolled */}
-      <nav className={`fixed top-4 left-1/2 -translate-x-1/2 max-w-6xl w-[calc(100%-2rem)] md:w-full bg-white/80 backdrop-blur-sm rounded-full px-4 md:px-6 lg:px-8 py-2.5 md:py-3 transition-all duration-500 ease-in-out ${
+      <nav className={`fixed top-4 left-1/2 -translate-x-1/2 max-w-6xl w-[calc(100%-2rem)] lg:w-full bg-white/80 backdrop-blur-sm rounded-full px-4 lg:px-8 py-2.5 lg:py-3 transition-all duration-500 ease-in-out ${
         isScrolled 
           ? 'opacity-100 translate-y-0 shadow-[0_10px_40px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)] border border-white/50' 
           : 'opacity-0 -translate-y-full pointer-events-none shadow-sm'

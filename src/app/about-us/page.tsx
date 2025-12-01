@@ -42,6 +42,9 @@ export default function AboutUsPage() {
               fill
               className="object-cover"
               priority
+              loading="eager"
+              fetchPriority="high"
+              quality={90}
             />
             <div className="absolute inset-0 bg-gradient-to-l from-[#19395f]/80 to-transparent"></div>
           </div>

@@ -7,11 +7,17 @@ import Script from "next/script";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const viewport: Viewport = {
@@ -106,7 +112,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB">
       <head>
-        {/* Structured Data for SEO */}
+        {/* Structured Data for SEO - Local Business */}
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -115,13 +121,33 @@ export default function RootLayout({
           }}
         />
         
+        {/* Preload Critical Images */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero1.png"
+          fetchPriority="high"
+          type="image/png"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/eyesite-logo.png"
+          fetchPriority="high"
+          type="image/png"
+        />
+        
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* DNS Prefetch */}
+        {/* DNS Prefetch for third-party resources */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        
+        {/* Optimize viewport for mobile */}
+        <meta name="theme-color" content="#19395f" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0d2440" media="(prefers-color-scheme: dark)" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

@@ -75,14 +75,26 @@ const heroSlides: HeroSlide[] = [
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoplayEnabled, setIsAutoplayEnabled] = useState(false);
+
+  // Defer autoplay start to improve initial load
+  useEffect(() => {
+    const startAutoplay = setTimeout(() => {
+      setIsAutoplayEnabled(true);
+    }, 2000); // Start after 2 seconds
+
+    return () => clearTimeout(startAutoplay);
+  }, []);
 
   useEffect(() => {
+    if (!isAutoplayEnabled) return;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % heroSlides.length);
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isAutoplayEnabled]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -107,7 +119,10 @@ export default function Hero() {
               fill
               className="object-cover"
               priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "auto"}
               sizes="100vw"
+              quality={index === 0 ? 90 : 75}
             />
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-black/60"></div>

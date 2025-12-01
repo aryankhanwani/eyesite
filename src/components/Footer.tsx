@@ -144,13 +144,23 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {/* Logo & Description */}
             <div className="lg:col-span-1">
-              <div className="mb-6">
+              <div className="mb-6 flex items-center gap-2">
+                {/* Logo Icon */}
+                <Image
+                  src="/logo-icon.png"
+                  alt="Eyesite Icon"
+                  width={48}
+                  height={48}
+                  quality={100}
+                  className="h-7 w-7 md:h-9 md:w-9 object-contain brightness-0 invert"
+                />
+                {/* Main Logo */}
                 <Image
                   src="/eyesite-logo.png"
                   alt="Eyesite Opticians Logo"
                   width={160}
                   height={50}
-                  className="h-10 md:h-12 w-auto object-contain brightness-0 invert"
+                  className="h-7 md:h-9 w-auto object-contain brightness-0 invert"
                 />
               </div>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
@@ -184,23 +194,23 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-3">
                 <li>
+                  <a href="/" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Home
+                  </a>
+                </li>
+                <li>
                   <a href="/about-us" className="text-white/70 hover:text-white transition-colors text-sm">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="/#services" className="text-white/70 hover:text-white transition-colors text-sm">
-                    Our Services
-                  </a>
-                </li>
-                <li>
-                  <a href="/#eyewear" className="text-white/70 hover:text-white transition-colors text-sm">
-                    Designer Eyewear
-                  </a>
-                </li>
-                <li>
                   <a href="/blog" className="text-white/70 hover:text-white transition-colors text-sm">
                     Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact-us" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Contact Us
                   </a>
                 </li>
                 <li>
@@ -227,7 +237,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href="/services/contact-lenses" className="text-white/70 hover:text-white transition-colors text-sm">
-                    Contact Lens Fitting
+                    Contact Lenses
                   </a>
                 </li>
                 <li>
@@ -238,6 +248,11 @@ export default function Footer() {
                 <li>
                   <a href="/services/dry-eye" className="text-white/70 hover:text-white transition-colors text-sm">
                     Dry Eye Treatment
+                  </a>
+                </li>
+                <li>
+                  <a href="/services/domicillary" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Domiciliary Services
                   </a>
                 </li>
               </ul>
@@ -340,14 +355,11 @@ export default function Footer() {
                 © {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
-                  Privacy Policy
+                <a href="/contact-us" className="text-white/60 hover:text-white transition-colors text-sm">
+                  Contact Us
                 </a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
-                  Cookie Policy
+                <a href="/book-appointment" className="text-white/60 hover:text-white transition-colors text-sm">
+                  Book Now
                 </a>
               </div>
             </div>
