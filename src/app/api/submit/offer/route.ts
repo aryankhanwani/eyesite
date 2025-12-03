@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { sendEmail, sendAdminNotification, emailTemplates } from '@/lib/email'
+import { sendVoucherCode, sendAdminOfferNotification } from '@/lib/email-client'
 
 function generateCode() {
   return `EYESITE${Math.random().toString(36).substring(2, 8).toUpperCase()}`
@@ -49,19 +49,10 @@ export async function POST(request: Request) {
 
       if (!error) {
         // Send voucher email to customer (non-blocking)
-        const voucherEmail = emailTemplates.voucherCode(email, code)
-        sendEmail({
-          to: email,
-          subject: voucherEmail.subject,
-          html: voucherEmail.html,
-        }).catch(err => console.error('Failed to send voucher email:', err))
+        sendVoucherCode(email, code).catch(err => console.error('Failed to send voucher email:', err))
 
         // Send notification to admin (non-blocking)
-        const adminEmail = emailTemplates.adminNotification.offer(email, code)
-        sendAdminNotification({
-          subject: adminEmail.subject,
-          html: adminEmail.html,
-        }).catch(err => console.error('Failed to send admin notification:', err))
+        sendAdminOfferNotification(email, code).catch(err => console.error('Failed to send admin notification:', err))
 
         return NextResponse.json({ success: true, data })
       }

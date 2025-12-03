@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { sendEmail, sendAdminNotification, emailTemplates } from '@/lib/email'
+import { sendAppointmentConfirmation, sendAdminAppointmentNotification } from '@/lib/email-client'
 
 export async function POST(request: Request) {
   try {
@@ -53,19 +53,10 @@ export async function POST(request: Request) {
     }
 
     // Send confirmation email to customer (non-blocking)
-    const confirmationEmail = emailTemplates.appointmentConfirmation(name, email, phone, service, message)
-    sendEmail({
-      to: email,
-      subject: confirmationEmail.subject,
-      html: confirmationEmail.html,
-    }).catch(err => console.error('Failed to send appointment confirmation email:', err))
+    sendAppointmentConfirmation(name, email, phone, service, message).catch(err => console.error('Failed to send appointment confirmation email:', err))
 
     // Send notification to admin (non-blocking)
-    const adminEmail = emailTemplates.adminNotification.appointment(name, email, phone, service, message)
-    sendAdminNotification({
-      subject: adminEmail.subject,
-      html: adminEmail.html,
-    }).catch(err => console.error('Failed to send admin notification:', err))
+    sendAdminAppointmentNotification(name, email, phone, service, message).catch(err => console.error('Failed to send admin notification:', err))
 
     return NextResponse.json({ success: true, data })
   } catch (error: any) {
