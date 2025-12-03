@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
       )}
 
-      <footer className="w-full bg-[#19395f] text-white relative overflow-hidden">
+    <footer className="w-full bg-[#19395f] text-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>

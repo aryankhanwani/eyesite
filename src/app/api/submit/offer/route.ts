@@ -82,12 +82,12 @@ export async function POST(request: Request) {
             message: 'You have already received a voucher code',
             data: existing 
           }, { status: 200 })
+          }
         }
-      }
 
       // Try new code
-      code = generateCode()
-      attempts++
+        code = generateCode()
+        attempts++
     }
 
     return NextResponse.json(

@@ -11,6 +11,7 @@ interface GoogleReview {
   rating: number;
   relative_time_description: string;
   text: string;
+  time?: number;
 }
 
 const Testimonials = () => {
@@ -34,7 +35,7 @@ const Testimonials = () => {
               text: review.text,
               image: review.profile_photo_url || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&q=80",
               name: review.author_name,
-              role: `Google Review • ${review.rating} stars • ${review.relative_time_description}`,
+              role: `Google Review • ${'⭐'.repeat(review.rating)} • ${review.relative_time_description}`,
             }));
             setTestimonials(transformedTestimonials);
             setLoading(false);

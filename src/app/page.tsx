@@ -6,7 +6,7 @@ import AboutUs from '@/components/AboutUs';
 import Services from '@/components/Services';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import VoucherPartners from '@/components/VoucherPartners';
-import Testimonials from '@/components/Testimonials';
+import GoogleReviews from '@/components/GoogleReviews';
 import AppointmentForm from '@/components/AppointmentForm';
 import Blogs from '@/components/Blogs';
 import Footer from '@/components/Footer';
@@ -46,7 +46,7 @@ export default function Home() {
       <WhyChooseUs />
       <PromoBanner />
       <VoucherPartners />
-      <Testimonials />
+      <GoogleReviews />
       <AppointmentForm />
       <Blogs />
       <Footer />
