@@ -9,11 +9,19 @@ import { getAllBlogPosts, categories, type BlogPost } from '@/lib/supabase-blogs
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
-      const all = await getAllBlogPosts();
-      setPosts(all);
+      setIsLoading(true);
+      try {
+        const all = await getAllBlogPosts();
+        setPosts(all);
+      } catch (error) {
+        console.error('Failed to load blogs:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     load();
   }, []);
@@ -66,7 +74,7 @@ export default function BlogPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="w-full py-8 bg-white border-b border-[#e7e8ea]/50 sticky top-[80px] z-40">
+      <section className="w-full py-8 bg-white border-b border-[#e7e8ea]/50">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex flex-wrap gap-3 items-center">
             <span className="text-sm font-medium text-[#19395f] mr-2">Filter by:</span>
@@ -90,7 +98,21 @@ export default function BlogPage() {
       {/* Blog Posts Grid */}
       <section className="w-full py-16 md:py-24 bg-[#faf9f6]">
         <div className="max-w-7xl mx-auto px-8">
-          {filteredPosts.length === 0 ? (
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#e7e8ea]/50 animate-pulse">
+                  <div className="aspect-[16/10] bg-gray-200"></div>
+                  <div className="p-6 space-y-4">
+                    <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+                    <div className="h-6 bg-gray-200 rounded w-full"></div>
+                    <div className="h-4 bg-gray-200 rounded w-full"></div>
+                    <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : filteredPosts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-black/60 text-lg">No posts found in this category.</p>
             </div>

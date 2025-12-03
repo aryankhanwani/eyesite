@@ -19,7 +19,7 @@ export default function DryEyePage() {
       <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden pt-20 md:pt-24">
         <div className="absolute inset-0">
           <Image
-            src="/prod-3.png"
+            src="/dry eye.png"
             alt="Dry Eye"
             fill
             className="object-cover"

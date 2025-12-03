@@ -95,142 +95,71 @@ export default function ContactUsPage() {
             </div>
           </div>
 
-          {/* Contact Form & Map Section */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-[#e7e8ea]/50">
-              <h2 className="text-2xl md:text-3xl font-medium text-[#19395f] mb-5">
-                Send Us a Message
-              </h2>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-[#19395f] mb-1.5">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-[#19395f] mb-1.5">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="contact-email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-phone" className="block text-sm font-medium text-[#19395f] mb-1.5">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="contact-phone"
-                    name="phone"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
-                    placeholder="+44 123 456 7890"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-subject" className="block text-sm font-medium text-[#19395f] mb-1.5">
-                    Subject *
-                  </label>
-                  <select
-                    id="contact-subject"
-                    name="subject"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="appointment">Book Appointment</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="service">Service Question</option>
-                    <option value="complaint">Complaint</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#19395f] mb-1.5">
-                    Message *
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40 resize-none"
-                    placeholder="Your message here..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="group relative w-full cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300"
+          {/* Map Section */}
+          <div className="mb-16">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-[#e7e8ea]/50 max-w-8xl">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#19395f] mb-4">Find Us</h3>
+              
+              {/* Open in Google Maps Link - Above Map */}
+              <div className="mb-4">
+                <a 
+                  href={businessInfo.google.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[#19395f] hover:text-[#80acc9] font-medium transition-colors text-sm md:text-base"
                 >
-                  <span className="inline-block whitespace-nowrap">Send Message</span>
-                </button>
-              </form>
-            </div>
-
-            {/* Map & Additional Info */}
-            <div className="space-y-5">
-              {/* Map Placeholder */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#e7e8ea]/50">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-3">Find Us</h3>
-                <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] h-64">
-                  <iframe
-                    src={businessInfo.google.embedUrl}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`${businessInfo.name} Location Map`}
-                  />
-                </div>
-                <div className="mt-3 space-y-1.5 text-sm">
-                  <p className="text-black/70"><strong>Address:</strong> {businessInfo.contact.address.full}</p>
-                  <p className="text-black/70"><strong>Parking:</strong> Available nearby</p>
-                  <p className="text-black/70"><strong>Public Transport:</strong> Bus stop 100m away</p>
-                  <a 
-                    href={businessInfo.google.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-[#19395f] hover:text-[#80acc9] font-medium transition-colors"
-                  >
-                    Open in Google Maps →
-                  </a>
-                </div>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Open in Google Maps
+                </a>
               </div>
 
-              {/* Opening Hours */}
-              <div className="bg-gradient-to-br from-[#19395f] to-[#0d2440] rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-semibold mb-4">Opening Hours</h3>
-                <div className="space-y-2.5">
-                  <div className="flex justify-between items-center">
-                    <span className="text-white/90">Monday - Friday</span>
-                    <span className="font-semibold">{businessInfo.hours.weekdays}</span>
+              {/* Map */}
+              <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] h-96 md:h-[500px] mb-6">
+                <iframe
+                  src={businessInfo.google.embedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`${businessInfo.name} Location Map`}
+                />
+              </div>
+              
+              {/* Address and Opening Hours - Side by Side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Address and Additional Info */}
+                <div className="bg-[#f4f6f8] rounded-xl p-6 md:p-7 space-y-3">
+                  <div>
+                    <p className="text-base md:text-lg text-black/70"><strong className="text-[#19395f] font-semibold">Address:</strong> {businessInfo.contact.address.full}</p>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-white/90">Saturday</span>
-                    <span className="font-semibold">{businessInfo.hours.saturday}</span>
+                  <div>
+                    <p className="text-base md:text-lg text-black/70"><strong className="text-[#19395f] font-semibold">Parking:</strong> Available nearby</p>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-white/90">Sunday</span>
-                    <span className="font-semibold">{businessInfo.hours.sunday}</span>
+                  <div>
+                    <p className="text-base md:text-lg text-black/70"><strong className="text-[#19395f] font-semibold">Public Transport:</strong> Bus stop 100m away</p>
                   </div>
-                  <div className="pt-3 mt-3 border-t border-white/20">
-                    <p className="text-sm text-white/80">{businessInfo.hours.note}</p>
+                </div>
+
+                {/* Opening Hours inside Map Card */}
+                <div className="bg-gradient-to-br from-[#19395f] to-[#0d2440] rounded-xl p-6 text-white">
+                  <h3 className="text-xl font-semibold mb-4">Opening Hours</h3>
+                  <div className="space-y-2.5">
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/90">Monday - Friday</span>
+                      <span className="font-semibold">{businessInfo.hours.weekdays}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/90">Saturday</span>
+                      <span className="font-semibold">{businessInfo.hours.saturday}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/90">Sunday</span>
+                      <span className="font-semibold">{businessInfo.hours.sunday}</span>
+                    </div>
                   </div>
                 </div>
               </div>

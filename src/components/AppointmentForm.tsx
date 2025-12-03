@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { businessInfo } from '@/lib/businessInfo';
 import Image from 'next/image';
+import CustomSelect from './CustomSelect';
 
 // Shiny button animation styles
 const shinyButtonStyles = `
@@ -68,10 +69,17 @@ export default function AppointmentForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
     });
   };
 
@@ -197,21 +205,21 @@ export default function AppointmentForm() {
                 <label htmlFor="service" className="block text-sm font-medium text-[#19395f] mb-2">
                   Service Type *
                 </label>
-                <select
+                <CustomSelect
                   id="service"
                   name="service"
                   value={formData.service}
-                  onChange={handleChange}
+                  onChange={handleServiceChange}
+                  placeholder="Select a service"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
-                >
-                  <option value="">Select a service</option>
-                  {serviceOptions.map((service) => (
-                    <option key={service} value={service}>
-                      {service}
-                    </option>
-                  ))}
-                </select>
+                  options={[
+                    { value: '', label: 'Select a service' },
+                    ...serviceOptions.map((service) => ({
+                      value: service,
+                      label: service,
+                    })),
+                  ]}
+                />
               </div>
 
               {/* Message Field */}

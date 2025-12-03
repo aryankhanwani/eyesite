@@ -7,11 +7,19 @@ import { getAllBlogPosts, type BlogPost } from '@/lib/supabase-blogs';
 export default function Blogs() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
-      const posts = await getAllBlogPosts();
-      setBlogs(posts.slice(0, 3));
+      setIsLoading(true);
+      try {
+        const posts = await getAllBlogPosts();
+        setBlogs(posts.slice(0, 3));
+      } catch (error) {
+        console.error('Failed to load blogs:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     load();
   }, []);
@@ -74,7 +82,20 @@ export default function Blogs() {
 
         {/* Blogs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
+          {isLoading ? (
+            [1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-[#e7e8ea]/50 animate-pulse">
+                <div className="h-64 bg-gray-200"></div>
+                <div className="p-6 md:p-8 space-y-4">
+                  <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+                  <div className="h-6 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                </div>
+              </div>
+            ))
+          ) : (
+            blogs.map((blog) => (
             <a
               key={blog.slug}
               href={`/blog/${blog.slug}`}
@@ -172,7 +193,8 @@ export default function Blogs() {
                 }`}
               ></div>
             </a>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>

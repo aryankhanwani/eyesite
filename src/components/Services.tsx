@@ -57,7 +57,7 @@ const services: Service[] = [
 
 export default function Services() {
   return (
-    <section className="w-full py-12 md:py-16 lg:py-24 bg-[#faf9f6]">
+    <section id="services" className="w-full py-12 md:py-16 lg:py-24 bg-[#faf9f6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Tag */}
         <div className="mb-4">
@@ -71,8 +71,8 @@ export default function Services() {
           Our Expert Services
         </h2>
 
-        {/* Services Grid - Responsive: 1 col mobile, 2 cols tablet, 3 cols desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        {/* Services Grid - 2 cols on mobile, 2 cols tablet, 3 cols desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
@@ -124,7 +124,7 @@ function ServiceCard({ service }: { service: Service }) {
       </div>
 
       {/* Description */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20">
+      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 hidden sm:block">
         <p className="text-white text-sm sm:text-base leading-relaxed">{service.description}</p>
       </div>
     </a>

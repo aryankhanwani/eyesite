@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+import { sendEmail, sendAdminNotification, emailTemplates } from '@/lib/email'
 
 function generateCode() {
   return `EYESITE${Math.random().toString(36).substring(2, 8).toUpperCase()}`
@@ -23,64 +25,71 @@ export async function POST(request: Request) {
       )
     }
 
+    const supabase = createClient(url, key, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    })
+
     let code = generateCode()
     let attempts = 0
 
     // Try to insert with a unique code; if conflict on code, regenerate
     while (attempts < 5) {
-      const response = await fetch(`${url}/rest/v1/offer_emails`, {
-        method: 'POST',
-        headers: {
-          apikey: key,
-          Authorization: `Bearer ${key}`,
-          'Content-Type': 'application/json',
-          Prefer: 'return=representation',
-        },
-        body: JSON.stringify({
+      const { data, error } = await supabase
+        .from('offer_emails')
+        .insert([{
           email,
           code,
           is_used: false,
-        }),
-      })
+        }])
+        .select()
+        .single()
 
-      if (response.ok) {
-        const data = await response.json()
-        return NextResponse.json({ success: true, data: data[0] })
+      if (!error) {
+        // Send voucher email to customer (non-blocking)
+        const voucherEmail = emailTemplates.voucherCode(email, code)
+        sendEmail({
+          to: email,
+          subject: voucherEmail.subject,
+          html: voucherEmail.html,
+        }).catch(err => console.error('Failed to send voucher email:', err))
+
+        // Send notification to admin (non-blocking)
+        const adminEmail = emailTemplates.adminNotification.offer(email, code)
+        sendAdminNotification({
+          subject: adminEmail.subject,
+          html: adminEmail.html,
+        }).catch(err => console.error('Failed to send admin notification:', err))
+
+        return NextResponse.json({ success: true, data })
       }
 
-      // On conflict (duplicate code or email) read existing record
-      if (response.status === 409) {
-        // Fetch existing by email – reuse existing code
-        const existingRes = await fetch(
-          `${url}/rest/v1/offer_emails?email=eq.${encodeURIComponent(
-            email
-          )}&select=*`,
-          {
-            headers: {
-              apikey: key,
-              Authorization: `Bearer ${key}`,
-            },
-          }
-        )
+      // Handle duplicate email
+      if (error.code === '23505') {
+        const { data: existing } = await supabase
+          .from('offer_emails')
+          .select('*')
+          .eq('email', email)
+          .single()
 
-        if (existingRes.ok) {
-          const existing = await existingRes.json()
-          if (existing[0]) {
-            return NextResponse.json({ success: true, data: existing[0] })
-          }
+        if (existing) {
+          // Resend existing code
+          const voucherEmail = emailTemplates.voucherCode(email, existing.code)
+          sendEmail({
+            to: email,
+            subject: voucherEmail.subject,
+            html: voucherEmail.html,
+          }).catch(err => console.error('Failed to resend voucher:', err))
+
+          return NextResponse.json({ success: true, data: existing })
         }
-
-        // Otherwise, try a new code
-        code = generateCode()
-        attempts++
-        continue
       }
 
-      const text = await response.text()
-      return NextResponse.json(
-        { error: text || 'Failed to sign up for offer' },
-        { status: 400 }
-      )
+      // Try new code
+      code = generateCode()
+      attempts++
     }
 
     return NextResponse.json(
@@ -88,7 +97,8 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    console.error('Unexpected error:', error)
+    return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 })
   }
 }
 

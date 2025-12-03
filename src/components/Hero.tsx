@@ -155,9 +155,19 @@ export default function Hero() {
             <button className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300 shiny-button">
               <span className="inline-block whitespace-nowrap">Book Appointment</span>
             </button>
-            <button className="rounded-full border-[0.5px] border-[#19395f]/30 bg-white py-3.5 cursor-pointer px-8 text-center font-semibold text-[#19395f] shadow-lg transition-all duration-300 hover:bg-[#19395f] hover:text-white hover:border-[#19395f]/20">
+            <a 
+              href="#services"
+              className="rounded-full border-[0.5px] border-[#19395f]/30 bg-white py-3.5 cursor-pointer px-8 text-center font-semibold text-[#19395f] shadow-lg transition-all duration-300 hover:bg-[#19395f] hover:text-white hover:border-[#19395f]/20 inline-block"
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('services');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
               View Services
-            </button>
+            </a>
           </div>
         </div>
       </div>

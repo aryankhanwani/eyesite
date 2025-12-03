@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { businessInfo } from '@/lib/businessInfo';
+import CustomSelect from '@/components/CustomSelect';
 
 // Shiny button animation styles
 const shinyButtonStyles = `
@@ -72,12 +73,21 @@ export default function BookAppointmentPage() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
     // Clear error when user starts typing
+    if (submitError) setSubmitError('');
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
+    });
+    // Clear error when user selects a service
     if (submitError) setSubmitError('');
   };
 
@@ -255,21 +265,21 @@ export default function BookAppointmentPage() {
                         <label htmlFor="service" className="block text-sm font-medium text-[#19395f] mb-2">
                           Service Type *
                         </label>
-                        <select
+                        <CustomSelect
                           id="service"
                           name="service"
                           value={formData.service}
-                          onChange={handleChange}
+                          onChange={handleServiceChange}
+                          placeholder="Select a service"
                           required
-                          className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
-                        >
-                          <option value="">Select a service</option>
-                          {serviceOptions.map((service) => (
-                            <option key={service} value={service}>
-                              {service}
-                            </option>
-                          ))}
-                        </select>
+                          options={[
+                            { value: '', label: 'Select a service' },
+                            ...serviceOptions.map((service) => ({
+                              value: service,
+                              label: service,
+                            })),
+                          ]}
+                        />
                       </div>
 
                       {/* Message Field */}

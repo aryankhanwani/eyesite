@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+import { sendEmail, sendAdminNotification, emailTemplates } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {
@@ -22,35 +24,53 @@ export async function POST(request: Request) {
       )
     }
 
-    const response = await fetch(`${url}/rest/v1/appointment_emails`, {
-      method: 'POST',
-      headers: {
-        apikey: key,
-        Authorization: `Bearer ${key}`,
-        'Content-Type': 'application/json',
-        Prefer: 'return=representation',
+    const supabase = createClient(url, key, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
       },
-      body: JSON.stringify({
+    })
+
+    const { data, error } = await supabase
+      .from('appointment_emails')
+      .insert([{
         name,
         email,
         phone,
         service: service || null,
         message: message || null,
         status: 'new',
-      }),
-    })
+      }])
+      .select()
+      .single()
 
-    if (!response.ok) {
-      const text = await response.text()
+    if (error) {
+      console.error('Supabase error:', error)
       return NextResponse.json(
-        { error: text || 'Failed to submit appointment' },
+        { error: error.message || 'Failed to submit appointment' },
         { status: 400 }
       )
     }
 
-    return NextResponse.json({ success: true })
+    // Send confirmation email to customer (non-blocking)
+    const confirmationEmail = emailTemplates.appointmentConfirmation(name, email, phone, service, message)
+    sendEmail({
+      to: email,
+      subject: confirmationEmail.subject,
+      html: confirmationEmail.html,
+    }).catch(err => console.error('Failed to send appointment confirmation email:', err))
+
+    // Send notification to admin (non-blocking)
+    const adminEmail = emailTemplates.adminNotification.appointment(name, email, phone, service, message)
+    sendAdminNotification({
+      subject: adminEmail.subject,
+      html: adminEmail.html,
+    }).catch(err => console.error('Failed to send admin notification:', err))
+
+    return NextResponse.json({ success: true, data })
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    console.error('Unexpected error:', error)
+    return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 })
   }
 }
 

@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
+import { sendEmail, sendAdminNotification, emailTemplates } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {
@@ -51,6 +52,21 @@ export async function POST(request: Request) {
         { status: 400 }
       )
     }
+
+    // Send welcome email to subscriber (non-blocking)
+    const welcomeEmail = emailTemplates.newsletterWelcome(email)
+    sendEmail({
+      to: email,
+      subject: welcomeEmail.subject,
+      html: welcomeEmail.html,
+    }).catch(err => console.error('Failed to send newsletter welcome email:', err))
+
+    // Send notification to admin (non-blocking)
+    const adminEmail = emailTemplates.adminNotification.newsletter(email)
+    sendAdminNotification({
+      subject: adminEmail.subject,
+      html: adminEmail.html,
+    }).catch(err => console.error('Failed to send admin notification:', err))
 
     return NextResponse.json({ success: true, data })
   } catch (error: any) {

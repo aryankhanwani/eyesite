@@ -14,22 +14,48 @@ export interface BlogPost {
   updated_at?: string
 }
 
+// Client-side cache for blogs
+let blogsCache: { data: BlogPost[]; timestamp: number } | null = null
+const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   try {
-    const response = await fetch('/api/blogs')
+    // Check cache first
+    if (blogsCache && Date.now() - blogsCache.timestamp < CACHE_DURATION) {
+      return blogsCache.data
+    }
+
+    const response = await fetch('/api/blogs', {
+      next: { revalidate: 300 }, // Revalidate every 5 minutes
+      headers: {
+        'Cache-Control': 'public, max-age=300',
+      },
+    })
+    
     if (!response.ok) {
       throw new Error('Failed to fetch blogs')
     }
+    
     const blogs = await response.json()
-    console.log('getAllBlogPosts received blogs', {
-      length: Array.isArray(blogs) ? blogs.length : null,
-      sample: Array.isArray(blogs) && blogs.length > 0 ? blogs[0] : null,
-    })
-    return blogs.sort((a: BlogPost, b: BlogPost) => 
+    
+    // Sort by date (already sorted by API, but ensure consistency)
+    const sortedBlogs = blogs.sort((a: BlogPost, b: BlogPost) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
     )
+    
+    // Update cache
+    blogsCache = {
+      data: sortedBlogs,
+      timestamp: Date.now(),
+    }
+    
+    return sortedBlogs
   } catch (error) {
     console.error('Error fetching blogs:', error)
+    // Return cached data if available, even if stale
+    if (blogsCache) {
+      return blogsCache.data
+    }
     return []
   }
 }
