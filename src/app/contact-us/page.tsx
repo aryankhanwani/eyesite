@@ -113,21 +113,21 @@ export default function ContactUsPage() {
                   </svg>
                   Open in Google Maps
                 </a>
-              </div>
+            </div>
 
               {/* Map */}
               <div className="relative rounded-xl overflow-hidden bg-[#f4f6f8] h-96 md:h-[500px] mb-6">
-                <iframe
-                  src={businessInfo.google.embedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={`${businessInfo.name} Location Map`}
-                />
-              </div>
+                  <iframe
+                    src={businessInfo.google.embedUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${businessInfo.name} Location Map`}
+                  />
+                </div>
               
               {/* Address and Opening Hours - Side by Side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -141,25 +141,25 @@ export default function ContactUsPage() {
                   </div>
                   <div>
                     <p className="text-base md:text-lg text-black/70"><strong className="text-[#19395f] font-semibold">Public Transport:</strong> Bus stop 100m away</p>
-                  </div>
                 </div>
+              </div>
 
                 {/* Opening Hours inside Map Card */}
                 <div className="bg-gradient-to-br from-[#19395f] to-[#0d2440] rounded-xl p-6 text-white">
-                  <h3 className="text-xl font-semibold mb-4">Opening Hours</h3>
-                  <div className="space-y-2.5">
-                    <div className="flex justify-between items-center">
-                      <span className="text-white/90">Monday - Friday</span>
-                      <span className="font-semibold">{businessInfo.hours.weekdays}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-white/90">Saturday</span>
-                      <span className="font-semibold">{businessInfo.hours.saturday}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-white/90">Sunday</span>
-                      <span className="font-semibold">{businessInfo.hours.sunday}</span>
-                    </div>
+                <h3 className="text-xl font-semibold mb-4">Opening Hours</h3>
+                <div className="space-y-2.5">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/90">Monday - Friday</span>
+                    <span className="font-semibold">{businessInfo.hours.weekdays}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/90">Saturday</span>
+                    <span className="font-semibold">{businessInfo.hours.saturday}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/90">Sunday</span>
+                    <span className="font-semibold">{businessInfo.hours.sunday}</span>
+                  </div>
                   </div>
                 </div>
               </div>

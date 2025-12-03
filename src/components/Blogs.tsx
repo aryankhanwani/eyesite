@@ -13,8 +13,8 @@ export default function Blogs() {
     const load = async () => {
       setIsLoading(true);
       try {
-        const posts = await getAllBlogPosts();
-        setBlogs(posts.slice(0, 3));
+      const posts = await getAllBlogPosts();
+      setBlogs(posts.slice(0, 3));
       } catch (error) {
         console.error('Failed to load blogs:', error);
       } finally {
