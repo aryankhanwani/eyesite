@@ -3,8 +3,10 @@ import { createClient } from '@supabase/supabase-js'
 import { sendEmail, sendAdminNotification, emailTemplates } from '@/lib/email'
 
 export async function POST(request: Request) {
+  console.log('📬 [API DEBUG] Appointment API route called')
   try {
     const { name, email, phone, service, message } = await request.json()
+    console.log('📬 [API DEBUG] Appointment request received for:', { name, email, phone })
 
     if (!name || !email || !phone) {
       return NextResponse.json(
@@ -53,19 +55,30 @@ export async function POST(request: Request) {
     }
 
     // Send confirmation email to customer (non-blocking)
+    console.log('📬 [API DEBUG] About to call sendEmail for appointment confirmation')
     const confirmationEmail = emailTemplates.appointmentConfirmation(name, email, phone, service, message)
+    console.log('📬 [API DEBUG] Email template created, calling sendEmail...')
     sendEmail({
       to: email,
       subject: confirmationEmail.subject,
       html: confirmationEmail.html,
-    }).catch(err => console.error('Failed to send appointment confirmation email:', err))
+    }).then(result => {
+      console.log('📬 [API DEBUG] sendEmail promise resolved:', result)
+    }).catch(err => {
+      console.error('📬 [API DEBUG] Failed to send appointment confirmation email:', err)
+    })
 
     // Send notification to admin (non-blocking)
+    console.log('📬 [API DEBUG] About to call sendAdminNotification')
     const adminEmail = emailTemplates.adminNotification.appointment(name, email, phone, service, message)
     sendAdminNotification({
       subject: adminEmail.subject,
       html: adminEmail.html,
-    }).catch(err => console.error('Failed to send admin notification:', err))
+    }).then(result => {
+      console.log('📬 [API DEBUG] sendAdminNotification promise resolved:', result)
+    }).catch(err => {
+      console.error('📬 [API DEBUG] Failed to send admin notification:', err)
+    })
 
     return NextResponse.json({ success: true, data })
   } catch (error: any) {
