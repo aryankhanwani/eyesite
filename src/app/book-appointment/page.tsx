@@ -64,8 +64,6 @@ export default function BookAppointmentPage() {
     name: '',
     email: '',
     phone: '',
-    date: '',
-    time: '',
     service: '',
     message: '',
   });
@@ -89,9 +87,7 @@ export default function BookAppointmentPage() {
     setSubmitError('');
     
     try {
-      // Here you would typically send the data to your backend API
-      // For now, we'll simulate an API call
-      const response = await fetch('/api/appointments', {
+      const response = await fetch('/api/submit/appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,11 +95,9 @@ export default function BookAppointmentPage() {
         body: JSON.stringify(formData),
       });
 
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // In a real application, you would check the response
-      // if (!response.ok) throw new Error('Failed to submit appointment');
+      if (!response.ok) {
+        throw new Error('Failed to submit appointment');
+      }
       
       setIsSubmitting(false);
       setSubmitSuccess(true);
@@ -114,8 +108,6 @@ export default function BookAppointmentPage() {
           name: '',
           email: '',
           phone: '',
-          date: '',
-          time: '',
           service: '',
           message: '',
         });
@@ -255,45 +247,6 @@ export default function BookAppointmentPage() {
                             className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
                             placeholder="+44 123 456 7890"
                           />
-                        </div>
-                      </div>
-
-                      {/* Date and Time Row */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label htmlFor="date" className="block text-sm font-medium text-[#19395f] mb-2">
-                            Preferred Date *
-                          </label>
-                          <input
-                            type="date"
-                            id="date"
-                            name="date"
-                            value={formData.date}
-                            onChange={handleChange}
-                            required
-                            min={new Date().toISOString().split('T')[0]}
-                            className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black"
-                          />
-                        </div>
-                        <div>
-                          <label htmlFor="time" className="block text-sm font-medium text-[#19395f] mb-2">
-                            Preferred Time *
-                          </label>
-                          <select
-                            id="time"
-                            name="time"
-                            value={formData.time}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
-                          >
-                            <option value="">Select a time</option>
-                            {timeSlots.map((slot) => (
-                              <option key={slot} value={slot}>
-                                {slot}
-                              </option>
-                            ))}
-                          </select>
                         </div>
                       </div>
 

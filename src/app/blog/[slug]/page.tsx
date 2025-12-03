@@ -1,7 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import { getBlogPostBySlug, getRelatedPosts, getAllBlogPosts } from '@/lib/blogPosts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -11,18 +10,77 @@ interface PageProps {
   }>;
 }
 
-// Generate static params for all blog posts
-export async function generateStaticParams() {
-  const posts = getAllBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+interface BlogRow {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string;
+  category: string;
+  image: string;
+  read_time: string;
+  tags: string[];
+}
+
+async function fetchBlog(slug: string): Promise<BlogRow | null> {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    return null;
+  }
+
+  const res = await fetch(
+    `${supabaseUrl}/rest/v1/blogs?slug=eq.${slug}&select=*`,
+    {
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+      // This page is fine to be cached per-request
+      cache: 'no-store',
+    }
+  );
+
+  if (!res.ok) return null;
+  const data: BlogRow[] = await res.json();
+  return data[0] || null;
+}
+
+async function fetchRelatedPosts(post: BlogRow): Promise<BlogRow[]> {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    return [];
+  }
+
+  const res = await fetch(
+    `${supabaseUrl}/rest/v1/blogs?category=eq.${encodeURIComponent(
+      post.category
+    )}&slug=neq.${encodeURIComponent(
+      post.slug
+    )}&select=*&order=date.desc&limit=3`,
+    {
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+      cache: 'no-store',
+    }
+  );
+
+  if (!res.ok) return [];
+  const data: BlogRow[] = await res.json();
+  return data;
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await fetchBlog(slug);
   
   if (!post) {
     return {
@@ -48,13 +106,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await fetchBlog(slug);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = getRelatedPosts(slug, 3);
+  const relatedPosts = await fetchRelatedPosts(post);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -153,7 +211,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
               </svg>
-              <span>{post.readTime}</span>
+              <span>{post.read_time}</span>
             </div>
           </div>
         </div>
@@ -259,10 +317,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </div>
 
                     <div className="p-6">
-                      <div className="flex items-center gap-2 mb-3 text-xs text-black/60">
+            <div className="flex items-center gap-2 mb-3 text-xs text-black/60">
                         <span>{formatDate(relatedPost.date)}</span>
                         <span>•</span>
-                        <span>{relatedPost.readTime}</span>
+                        <span>{relatedPost.read_time}</span>
                       </div>
 
                       <h3 className="text-lg font-semibold text-[#19395f] mb-2 group-hover:text-[#80acc9] transition-colors line-clamp-2">

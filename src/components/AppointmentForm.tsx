@@ -61,8 +61,6 @@ export default function AppointmentForm() {
     name: '',
     email: '',
     phone: '',
-    date: '',
-    time: '',
     service: '',
     message: '',
   });
@@ -81,25 +79,38 @@ export default function AppointmentForm() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-        time: '',
-        service: '',
-        message: '',
+    try {
+      const response = await fetch('/api/submit/appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      setSubmitSuccess(false);
-    }, 3000);
+
+      if (!response.ok) {
+        throw new Error('Failed to submit appointment');
+      }
+      
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+        });
+        setSubmitSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error('Error submitting appointment:', error);
+      alert('Failed to submit appointment. Please try again or call us directly.');
+    }
   };
 
   return (
@@ -178,45 +189,6 @@ export default function AppointmentForm() {
                     className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black placeholder:text-black/40"
                     placeholder="+44 123 456 7890"
                   />
-                </div>
-              </div>
-
-              {/* Date and Time Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="date" className="block text-sm font-medium text-[#19395f] mb-2">
-                    Preferred Date *
-                  </label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    required
-                    min={new Date().toISOString().split('T')[0]}
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="time" className="block text-sm font-medium text-[#19395f] mb-2">
-                    Preferred Time *
-                  </label>
-                  <select
-                    id="time"
-                    name="time"
-                    value={formData.time}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-[#e7e8ea] focus:border-[#19395f] focus:ring-2 focus:ring-[#19395f]/20 outline-none transition-all text-black bg-white"
-                  >
-                    <option value="">Select a time</option>
-                    {timeSlots.map((slot) => (
-                      <option key={slot} value={slot}>
-                        {slot}
-                      </option>
-                    ))}
-                  </select>
                 </div>
               </div>
 

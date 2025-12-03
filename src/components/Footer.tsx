@@ -13,17 +13,41 @@ export default function Footer() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/submit/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    setIsSuccess(true);
-    setIsSubmitting(false);
+      if (!response.ok) {
+        let errorMessage = 'Failed to subscribe';
+        try {
+          const data = await response.json();
+          if (data?.error) {
+            errorMessage = data.error;
+          }
+        } catch {
+          // ignore JSON parse errors and fall back to default message
+        }
+        throw new Error(errorMessage);
+      }
 
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setIsSuccess(false);
-      setEmail('');
-    }, 3000);
+      setIsSuccess(true);
+      setIsSubmitting(false);
+
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+        setEmail('');
+      }, 3000);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error('Error subscribing to newsletter:', error);
+      alert('Failed to subscribe. Please try again.');
+    }
   };
 
   return (

@@ -48,29 +48,39 @@ export default function PromoBanner() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [voucherCode, setVoucherCode] = useState('');
 
-  const generateVoucherCode = () => {
-    return `EYESITE${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/submit/offer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    // Generate voucher code
-    const code = generateVoucherCode();
-    setVoucherCode(code);
-    setIsSuccess(true);
-    setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error('Failed to sign up for offer');
+      }
 
-    // Reset after 10 seconds
-    setTimeout(() => {
-      setIsSuccess(false);
-      setEmail('');
-      setVoucherCode('');
-    }, 10000);
+      const data = await response.json();
+      setVoucherCode(data.data.code);
+      setIsSuccess(true);
+      setIsSubmitting(false);
+
+      // Reset after 10 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+        setEmail('');
+        setVoucherCode('');
+      }, 10000);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error('Error signing up for offer:', error);
+      alert('Failed to sign up. Please try again.');
+    }
   };
 
   return (

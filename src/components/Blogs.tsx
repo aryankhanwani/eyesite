@@ -1,13 +1,20 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
-import { getAllBlogPosts } from '@/lib/blogPosts';
+import { useEffect, useState } from 'react';
+import { getAllBlogPosts, type BlogPost } from '@/lib/supabase-blogs';
 
 export default function Blogs() {
-  const allPosts = getAllBlogPosts();
-  const blogs = allPosts.slice(0, 3); // Show only the 3 most recent posts
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    const load = async () => {
+      const posts = await getAllBlogPosts();
+      setBlogs(posts.slice(0, 3));
+    };
+    load();
+  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -115,7 +122,7 @@ export default function Blogs() {
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    {blog.readTime}
+                    {blog.read_time}
                   </div>
                 </div>
               </div>

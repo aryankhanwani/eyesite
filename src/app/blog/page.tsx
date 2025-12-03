@@ -1,18 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import { getAllBlogPosts, categories } from '@/lib/blogPosts';
+import { getAllBlogPosts, categories, type BlogPost } from '@/lib/supabase-blogs';
 
 export default function BlogPage() {
-  const allPosts = getAllBlogPosts();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  useEffect(() => {
+    const load = async () => {
+      const all = await getAllBlogPosts();
+      setPosts(all);
+    };
+    load();
+  }, []);
+
   const filteredPosts = selectedCategory === 'All' 
-    ? allPosts 
-    : allPosts.filter(post => post.category === selectedCategory);
+    ? posts 
+    : posts.filter(post => post.category === selectedCategory);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -118,7 +126,7 @@ export default function BlogPage() {
                       <div className="flex items-center gap-4 mb-3 text-xs text-black/60">
                         <span>{formatDate(post.date)}</span>
                         <span>•</span>
-                        <span>{post.readTime}</span>
+                        <span>{post.read_time}</span>
                       </div>
 
                       {/* Title */}
