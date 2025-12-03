@@ -2,9 +2,10 @@ import { NextResponse } from 'next/server'
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
@@ -16,7 +17,7 @@ export async function GET(
     }
 
     const response = await fetch(
-      `${supabaseUrl}/rest/v1/blogs?slug=eq.${params.slug}&select=*`,
+      `${supabaseUrl}/rest/v1/blogs?slug=eq.${slug}&select=*`,
       {
         headers: {
           apikey: supabaseKey,
