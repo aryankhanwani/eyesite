@@ -19,7 +19,7 @@ export default function DryEyePage() {
       <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden pt-20 md:pt-24">
         <div className="absolute inset-0">
           <Image
-            src="/dry eye.png"
+            src="/prod-3.png"
             alt="Dry Eye"
             fill
             className="object-cover"
@@ -187,7 +187,7 @@ export default function DryEyePage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/dry eye.png"
+                  src="/prod-1.png"
                   alt="Understanding Dry Eye"
                   fill
                   className="object-cover"
@@ -316,12 +316,46 @@ export default function DryEyePage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/dry eye.png"
+                  src="/prod-2.png"
                   alt="Dry Eye Products"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#19395f]/60 to-transparent"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trusted Brands */}
+          <div className="mb-16">
+            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-[#e7e8ea]/50">
+              <div className="text-center mb-8">
+                <h3 className="text-xl md:text-2xl font-semibold text-[#19395f] mb-2">
+                  Trusted by Eyecare Professionals
+                </h3>
+                <p className="text-black/70 text-sm md:text-base">
+                  We stock leading dry eye care brands recommended by eyecare professionals worldwide
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                <div className="flex items-center justify-center p-4 md:p-6 bg-[#f4f6f8] rounded-xl hover:bg-white transition-colors border border-[#e7e8ea]/50">
+                  <Image
+                    src="/hycosan.png"
+                    alt="Hycosan"
+                    width={180}
+                    height={80}
+                    className="h-auto w-auto max-h-16 md:max-h-20 object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                <div className="flex items-center justify-center p-4 md:p-6 bg-[#f4f6f8] rounded-xl hover:bg-white transition-colors border border-[#e7e8ea]/50">
+                  <Image
+                    src="/optase.png"
+                    alt="Optase"
+                    width={180}
+                    height={80}
+                    className="h-auto w-auto max-h-16 md:max-h-20 object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
               </div>
             </div>
           </div>

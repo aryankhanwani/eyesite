@@ -68,7 +68,7 @@ export default function Services() {
 
         {/* Heading */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-black mb-8 md:mb-12 leading-tight">
-          Our Expert Services to Drive Growth
+          Our Expert Services
         </h2>
 
         {/* Services Grid - Responsive: 1 col mobile, 2 cols tablet, 3 cols desktop */}

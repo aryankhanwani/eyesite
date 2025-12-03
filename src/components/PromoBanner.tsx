@@ -116,36 +116,36 @@ export default function PromoBanner() {
               <div className="relative z-10 mt-6 sm:mt-auto">
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-start gap-2.5 sm:gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
-                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-xs sm:text-sm">On All Frames</p>
-                      <p className="text-xs text-white/70 hidden sm:block">Premium designer brands included</p>
+                      <p className="font-semibold text-white text-sm sm:text-base md:text-lg">On All Frames</p>
+                      <p className="text-xs sm:text-sm md:text-base text-white/70 hidden sm:block">Premium designer brands included</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2.5 sm:gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
-                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-xs sm:text-sm">No Minimum Purchase</p>
-                      <p className="text-xs text-white/70 hidden sm:block">Valid on all frame styles</p>
+                      <p className="font-semibold text-white text-sm sm:text-base md:text-lg">No Minimum Purchase</p>
+                      <p className="text-xs sm:text-sm md:text-base text-white/70 hidden sm:block">Valid on all frame styles</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2.5 sm:gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
-                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mt-0.5">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-xs sm:text-sm">Book Your Appointment</p>
-                      <p className="text-xs text-white/70 hidden sm:block">Claim your discount today</p>
+                      <p className="font-semibold text-white text-sm sm:text-base md:text-lg">Book Your Appointment</p>
+                      <p className="text-xs sm:text-sm md:text-base text-white/70 hidden sm:block">Claim your discount today</p>
                     </div>
                   </div>
                 </div>

@@ -370,7 +370,6 @@ export default function BookAppointmentPage() {
                   <ul className="space-y-4">
                     {[
                       { icon: '✓', text: 'Expert optometrists with years of experience' },
-                      { icon: '✓', text: 'State-of-the-art diagnostic equipment' },
                       { icon: '✓', text: 'Wide selection of designer eyewear' },
                       { icon: '✓', text: 'Personalized care and attention' },
                       { icon: '✓', text: 'Flexible appointment scheduling' },
