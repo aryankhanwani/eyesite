@@ -49,30 +49,19 @@ export async function POST(request: Request) {
 
       if (!error) {
         // Send voucher email to customer (non-blocking)
-        console.log('📬 [API DEBUG] About to call sendEmail for voucher code')
         const voucherEmail = emailTemplates.voucherCode(email, code)
-        console.log('📬 [API DEBUG] Email template created, calling sendEmail...')
         sendEmail({
           to: email,
           subject: voucherEmail.subject,
           html: voucherEmail.html,
-        }).then(result => {
-          console.log('📬 [API DEBUG] sendEmail promise resolved:', result)
-        }).catch(err => {
-          console.error('📬 [API DEBUG] Failed to send voucher email:', err)
-        })
+        }).catch(err => console.error('Failed to send voucher email:', err))
 
         // Send notification to admin (non-blocking)
-        console.log('📬 [API DEBUG] About to call sendAdminNotification')
         const adminEmail = emailTemplates.adminNotification.offer(email, code)
         sendAdminNotification({
           subject: adminEmail.subject,
           html: adminEmail.html,
-        }).then(result => {
-          console.log('📬 [API DEBUG] sendAdminNotification promise resolved:', result)
-        }).catch(err => {
-          console.error('📬 [API DEBUG] Failed to send admin notification:', err)
-        })
+        }).catch(err => console.error('Failed to send admin notification:', err))
 
         return NextResponse.json({ success: true, data })
       }

@@ -1,8 +1,5 @@
 import nodemailer from 'nodemailer'
 
-// Debug: Confirm module is loaded
-console.log('📧 [DEBUG] email.ts module loaded/imported')
-
 // Create reusable transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -14,13 +11,7 @@ const transporter = nodemailer.createTransport({
 
 // Verify connection on startup
 transporter.verify((error, success) => {
-  if (error) {
-    console.error('❌ Email transporter error:', error)
-    console.log('📧 [DEBUG] Transporter verification failed - Check GMAIL_USER and GMAIL_APP_PASSWORD')
-  } else {
-    console.log('✅ Email server is ready to send messages')
-    console.log('📧 [DEBUG] Transporter verified successfully')
-  }
+  // Connection verification (silent)
 })
 
 function getBaseUrl() {
@@ -43,10 +34,6 @@ export async function sendEmail({
   html: string
   text?: string
 }) {
-  // Debug: Log when function is called
-  console.log('📧 [DEBUG] sendEmail called - To:', Array.isArray(to) ? to.join(', ') : to, 'Subject:', subject)
-  console.log('📧 [DEBUG] GMAIL_USER exists:', !!process.env.GMAIL_USER, 'GMAIL_APP_PASSWORD exists:', !!process.env.GMAIL_APP_PASSWORD)
-  
   try {
     const info = await transporter.sendMail({
       from: `"Eyesite Opticians" <${process.env.GMAIL_USER}>`,
@@ -56,17 +43,8 @@ export async function sendEmail({
       html,
     })
 
-    console.log('✅ Email sent successfully:', info.messageId)
-    console.log('📧 [DEBUG] Email send completed successfully')
     return { success: true, messageId: info.messageId }
   } catch (error: any) {
-    console.error('❌ Error sending email:', error)
-    console.error('📧 [DEBUG] Email send failed - Error details:', {
-      message: error.message,
-      code: error.code,
-      command: error.command,
-      response: error.response,
-    })
     return { success: false, error: error.message }
   }
 }
@@ -82,9 +60,7 @@ export async function sendAdminNotification({
   text?: string
 }) {
   const adminEmail = process.env.ADMIN_EMAIL
-  console.log('📧 [DEBUG] sendAdminNotification called - ADMIN_EMAIL exists:', !!adminEmail)
   if (!adminEmail) {
-    console.error('❌ ADMIN_EMAIL not configured')
     return { success: false, error: 'Admin email not configured' }
   }
 
