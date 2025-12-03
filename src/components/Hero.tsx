@@ -152,9 +152,12 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300 shiny-button">
+            <a 
+              href="/book-appointment"
+              className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-[0.5px] border-[#19395f]/20 bg-[#19395f] py-3.5 px-8 text-center font-semibold text-white shadow-lg hover:bg-white hover:text-[#19395f] hover:border-[#19395f]/30 transition-all duration-300 shiny-button inline-block"
+            >
               <span className="inline-block whitespace-nowrap">Book Appointment</span>
-            </button>
+            </a>
             <a 
               href="#services"
               className="rounded-full border-[0.5px] border-[#19395f]/30 bg-white py-3.5 cursor-pointer px-8 text-center font-semibold text-[#19395f] shadow-lg transition-all duration-300 hover:bg-[#19395f] hover:text-white hover:border-[#19395f]/20 inline-block"
