@@ -8,6 +8,7 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [showDuplicateModal, setShowDuplicateModal] = useState(false);
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,15 +23,20 @@ export default function Footer() {
         body: JSON.stringify({ email }),
       });
 
+      const data = await response.json();
+
+      if (data.duplicate) {
+        // Show duplicate modal
+        setShowDuplicateModal(true);
+        setIsSubmitting(false);
+        setEmail('');
+        return;
+      }
+
       if (!response.ok) {
         let errorMessage = 'Failed to subscribe';
-        try {
-          const data = await response.json();
-          if (data?.error) {
-            errorMessage = data.error;
-          }
-        } catch {
-          // ignore JSON parse errors and fall back to default message
+        if (data?.error) {
+          errorMessage = data.error;
         }
         throw new Error(errorMessage);
       }
@@ -51,7 +57,33 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#19395f] text-white relative overflow-hidden">
+    <>
+      {/* Duplicate Email Modal */}
+      {showDuplicateModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setShowDuplicateModal(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Already Subscribed</h3>
+              <p className="text-gray-600 mb-6">
+                You have already subscribed to our newsletter. Thank you for your interest!
+              </p>
+              <button
+                onClick={() => setShowDuplicateModal(false)}
+                className="w-full bg-[#19395f] text-white py-3 px-6 rounded-xl font-semibold hover:bg-[#0d2440] transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <footer className="w-full bg-[#19395f] text-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
@@ -391,6 +423,7 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
 

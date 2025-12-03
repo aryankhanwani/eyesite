@@ -75,15 +75,13 @@ export async function POST(request: Request) {
           .single()
 
         if (existing) {
-          // Resend existing code
-          const voucherEmail = emailTemplates.voucherCode(email, existing.code)
-          sendEmail({
-            to: email,
-            subject: voucherEmail.subject,
-            html: voucherEmail.html,
-          }).catch(err => console.error('Failed to resend voucher:', err))
-
-          return NextResponse.json({ success: true, data: existing })
+          // Return duplicate indicator instead of resending
+          return NextResponse.json({ 
+            success: false,
+            duplicate: true,
+            message: 'You have already received a voucher code',
+            data: existing 
+          }, { status: 200 })
         }
       }
 

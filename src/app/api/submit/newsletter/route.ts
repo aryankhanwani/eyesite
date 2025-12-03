@@ -39,11 +39,15 @@ export async function POST(request: Request) {
       .select()
       .single()
 
-    // If email already exists (unique constraint), treat as success
+    // If email already exists (unique constraint), return duplicate indicator
     if (error) {
       if (error.code === '23505') {
         // Unique constraint violation - email already exists
-        return NextResponse.json({ success: true, message: 'Already subscribed' })
+        return NextResponse.json({ 
+          success: false, 
+          duplicate: true,
+          message: 'You have already subscribed to our newsletter' 
+        }, { status: 200 })
       }
       
       console.error('Supabase error:', error)
