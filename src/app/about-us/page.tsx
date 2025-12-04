@@ -292,102 +292,82 @@ export default function AboutUsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Team Member 1 */}
+            {/* Team Member 1 - Naveed Khan */}
             <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/eye-exams.png"
-                  alt="Dr. Sarah Johnson"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#19395f] to-[#0d2440] flex items-center justify-center">
+                <svg className="w-32 h-32 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Dr. Sarah Johnson</h3>
-                <p className="text-[#80acc9] text-sm font-medium mb-3">Lead Optometrist</p>
-                <p className="text-black/70 text-sm leading-relaxed">
-                  With over 12 years of experience, Dr. Johnson specializes in comprehensive eye examinations and diabetic eye care.
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/eyewear.png"
-                  alt="Michael Chen"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Michael Chen</h3>
-                <p className="text-[#80acc9] text-sm font-medium mb-3">Senior Dispensing Optician</p>
-                <p className="text-black/70 text-sm leading-relaxed">
-                  Expert in frame fitting and styling, Michael helps patients find eyewear that perfectly matches their style and needs.
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 3 */}
-            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/lens.png"
-                  alt="Dr. Emily Williams"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Dr. Emily Williams</h3>
-                <p className="text-[#80acc9] text-sm font-medium mb-3">Contact Lens Specialist</p>
-                <p className="text-black/70 text-sm leading-relaxed">
-                  Specialising in contact lens fitting and dry eye treatment, Dr. Williams provides personalised solutions for every patient.
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 4 */}
-            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/cues.png"
-                  alt="James Anderson"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-1">James Anderson</h3>
+                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Naveed Khan</h3>
                 <p className="text-[#80acc9] text-sm font-medium mb-3">Optometrist</p>
                 <p className="text-black/70 text-sm leading-relaxed">
-                  With expertise in urgent eye care and pediatric optometry, James ensures patients of all ages receive exceptional care.
+                  Experienced optometrist dedicated to providing comprehensive eye examinations and personalised care for all patients.
                 </p>
               </div>
             </div>
 
-            {/* Team Member 5 */}
-            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/dry eye.png"
-                  alt="Lisa Martinez"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            {/* Team Member 2 - Anwar Aziz */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#19395f] to-[#0d2440] flex items-center justify-center">
+                <svg className="w-32 h-32 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Lisa Martinez</h3>
-                <p className="text-[#80acc9] text-sm font-medium mb-3">Practice Manager</p>
+                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Anwar Aziz</h3>
+                <p className="text-[#80acc9] text-sm font-medium mb-3">Optometrist</p>
                 <p className="text-black/70 text-sm leading-relaxed">
-                  Ensuring smooth operations and exceptional patient experience, Lisa coordinates all aspects of our practice with dedication.
+                  Skilled optometrist with expertise in diagnosing and managing various eye conditions, committed to delivering exceptional patient care.
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 3 - Laura XX */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#19395f] to-[#0d2440] flex items-center justify-center">
+                <svg className="w-32 h-32 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Laura XX</h3>
+                <p className="text-[#80acc9] text-sm font-medium mb-3">Dispensing Optician</p>
+                <p className="text-black/70 text-sm leading-relaxed">
+                  Expert dispensing optician specialising in frame fitting, lens selection, and helping patients find the perfect eyewear solution.
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 4 - Claire */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#19395f] to-[#0d2440] flex items-center justify-center">
+                <svg className="w-32 h-32 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Claire</h3>
+                <p className="text-[#80acc9] text-sm font-medium mb-3">Receptionist</p>
+                <p className="text-black/70 text-sm leading-relaxed">
+                  Friendly and welcoming receptionist ensuring smooth patient experiences from appointment booking to check-in and beyond.
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 5 - Shyla Bashir-Khan */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-[#e7e8ea]/50 hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#19395f] to-[#0d2440] flex items-center justify-center">
+                <svg className="w-32 h-32 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-[#19395f] mb-1">Shyla Bashir-Khan</h3>
+                <p className="text-[#80acc9] text-sm font-medium mb-3">Marketing Manager</p>
+                <p className="text-black/70 text-sm leading-relaxed">
+                  Marketing manager responsible for promoting our services, managing our online presence, and connecting with our community.
                 </p>
               </div>
             </div>
