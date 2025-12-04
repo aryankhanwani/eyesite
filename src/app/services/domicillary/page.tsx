@@ -109,7 +109,7 @@ export default function DomicillaryPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-black mb-1 md:mb-2 text-sm md:text-base">Elderly Patients</h3>
-                    <p className="text-sm md:text-base text-black/70">Specialized care for older adults who find travel difficult.</p>
+                    <p className="text-sm md:text-base text-black/70">Specialised care for older adults who find travel difficult.</p>
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function DomicillaryPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1 md:mb-2 text-sm md:text-base">No Travel Required</h3>
-                  <p className="text-white/80 text-xs md:text-sm">Eliminate the stress and difficulty of traveling to appointments.</p>
+                  <p className="text-white/80 text-xs md:text-sm">Eliminate the stress and difficulty of travelling to appointments.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 md:gap-4">
@@ -210,7 +210,7 @@ export default function DomicillaryPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1 md:mb-2 text-sm md:text-base">Personalized Service</h3>
+                  <h3 className="font-semibold mb-1 md:mb-2 text-sm md:text-base">Personalised Service</h3>
                   <p className="text-white/80 text-xs md:text-sm">One-on-one attention in a relaxed, familiar environment.</p>
                 </div>
               </div>
@@ -260,7 +260,7 @@ export default function DomicillaryPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-black/70">Personalized frame selection brought to your home</p>
+                  <p className="text-black/70">Personalised frame selection brought to your home</p>
                 </div>
               </div>
             </div>

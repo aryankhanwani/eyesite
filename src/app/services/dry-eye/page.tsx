@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Dry Eye Treatment Clinic',
-  description: 'Specialist dry eye treatment in Leeds. Advanced diagnostics and personalized treatment plans including IPL therapy. Relief from dry, irritated, watery eyes at Eyesite Opticians.',
+  description: 'Specialist dry eye treatment in Leeds. Advanced diagnostics and personalised treatment plans including IPL therapy. Relief from dry, irritated, watery eyes at Eyesite Opticians.',
   keywords: ['dry eye treatment Leeds', 'dry eye clinic Leeds', 'IPL therapy Leeds', 'eye irritation treatment', 'watery eyes treatment', 'blepharitis treatment Leeds'],
 };
 
@@ -85,7 +85,7 @@ export default function DryEyePage() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-semibold text-[#19395f] mb-3 md:mb-4">Comprehensive Product Range</h3>
                 <p className="text-sm md:text-base text-black/70 leading-relaxed">
-                  We stock a large range of dry eye products including artificial tears, gels, ointments, and specialized 
+                  We stock a large range of dry eye products including artificial tears, gels, ointments, and specialised 
                   treatments to suit different types and severities of dry eye.
                 </p>
               </div>
@@ -176,7 +176,7 @@ export default function DryEyePage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black mb-1 md:mb-2 text-sm md:text-base">Specialized Procedures</h3>
+                  <h3 className="font-semibold text-black mb-1 md:mb-2 text-sm md:text-base">Specialised Procedures</h3>
                   <p className="text-sm md:text-base text-black/70">Advanced treatments for severe cases, including punctal plugs.</p>
                 </div>
               </div>
@@ -322,11 +322,11 @@ export default function DryEyePage() {
                 Comprehensive Dry Eye Management
               </h2>
               <p className="text-base md:text-lg text-white/90 mb-6 md:mb-8 text-center leading-relaxed">
-                Our dedicated clinic provides personalized care plans tailored to your specific dry eye condition.
+                Our dedicated clinic provides personalised care plans tailored to your specific dry eye condition.
               </p>
               <div className="grid md:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center">
-                  <h3 className="font-semibold text-base md:text-lg mb-2">Personalized Plans</h3>
+                  <h3 className="font-semibold text-base md:text-lg mb-2">Personalised Plans</h3>
                   <p className="text-white/90 text-xs md:text-sm">Treatment tailored to your specific needs and lifestyle</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center">

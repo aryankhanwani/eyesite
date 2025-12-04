@@ -381,7 +381,7 @@ export default function BookAppointmentPage() {
                     {[
                       { icon: '✓', text: 'Expert optometrists with years of experience' },
                       { icon: '✓', text: 'Wide selection of designer eyewear' },
-                      { icon: '✓', text: 'Personalized care and attention' },
+                      { icon: '✓', text: 'Personalised care and attention' },
                       { icon: '✓', text: 'Flexible appointment scheduling' },
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">

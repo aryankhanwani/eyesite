@@ -131,7 +131,7 @@ export default function EyewearPage() {
               </div>
               <div className="bg-white rounded-xl p-4 md:p-6 shadow-md border border-[#e7e8ea]/50">
                 <h3 className="font-semibold text-[#19395f] mb-2 md:mb-3 text-sm md:text-base">Blue Light Protection</h3>
-                <p className="text-xs md:text-sm text-black/70">Protect your eyes from digital screen blue light with specialized lens coatings.</p>
+                <p className="text-xs md:text-sm text-black/70">Protect your eyes from digital screen blue light with specialised lens coatings.</p>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function EyewearPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-sm md:text-base text-black/70">Color consultation to match your skin tone and wardrobe</p>
+                  <p className="text-sm md:text-base text-black/70">Colour consultation to match your skin tone and wardrobe</p>
                 </div>
               </div>
             </div>
@@ -221,14 +221,14 @@ export default function EyewearPage() {
             </div>
           </div>
 
-          {/* Lens Customization */}
+          {/* Lens Customisation */}
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center mb-12 md:mb-16 lg:mb-20">
             <div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#19395f] mb-4 md:mb-6">
-                Customized Lens Solutions
+                Customised Lens Solutions
               </h2>
               <p className="text-base md:text-lg text-black/70 mb-4 md:mb-6 leading-relaxed">
-                Every lens is customized to your exact prescription and lifestyle needs, ensuring optimal vision and comfort.
+                Every lens is customised to your exact prescription and lifestyle needs, ensuring optimal vision and comfort.
               </p>
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-[#f4f6f8] rounded-xl">
@@ -262,7 +262,7 @@ export default function EyewearPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-black text-sm md:text-base">Blue Light Protection</h3>
-                    <p className="text-xs md:text-sm text-black/60">Specialized coatings for digital eye strain</p>
+                    <p className="text-xs md:text-sm text-black/60">Specialised coatings for digital eye strain</p>
                   </div>
                 </div>
               </div>
@@ -271,7 +271,7 @@ export default function EyewearPage() {
               <div className="aspect-[4/3] relative">
                 <Image
                   src="/eyewear.png"
-                  alt="Customized Lens Solutions"
+                  alt="Customised Lens Solutions"
                   fill
                   className="object-cover"
                 />

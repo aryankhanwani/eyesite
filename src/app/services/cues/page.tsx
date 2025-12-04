@@ -221,7 +221,7 @@ export default function CUESPage() {
                   <span className="text-xl md:text-2xl font-bold text-[#19395f]">2</span>
                 </div>
                 <h3 className="font-semibold text-[#19395f] mb-2 md:mb-3 text-center text-sm md:text-base">Eye Examination</h3>
-                <p className="text-xs md:text-sm text-black/70 text-center">Comprehensive assessment using specialized equipment</p>
+                <p className="text-xs md:text-sm text-black/70 text-center">Comprehensive assessment using specialised equipment</p>
               </div>
               <div className="bg-white rounded-xl p-4 md:p-6 shadow-md border border-[#e7e8ea]/50">
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#19395f]/10 flex items-center justify-center mx-auto mb-3 md:mb-4">

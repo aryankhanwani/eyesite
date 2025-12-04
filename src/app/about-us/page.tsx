@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Eyesite Opticians Leeds. Expert optometrists with 15+ years of experience, serving 50,000+ patients. NHS & COO registered. State-of-the-art equipment and personalized eye care services in Halton, Leeds.',
+  description: 'Learn about Eyesite Opticians Leeds. Expert optometrists with 15+ years of experience, serving 50,000+ patients. NHS & COO registered. State-of-the-art equipment and personalised eye care services in Halton, Leeds.',
   openGraph: {
     title: 'About Eyesite Opticians | Expert Eye Care Team in Leeds',
     description: 'Meet our experienced team of optometrists dedicated to providing exceptional eye care services in Leeds.',
@@ -106,7 +106,7 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-lg font-semibold text-[#19395f] mb-3">Expanding Services</h3>
               <p className="text-black/70 text-sm leading-relaxed">
-                Introduced specialized services including CUES, Dry Eye Clinic, and Domicillary Services.
+                Introduced specialised services including CUES, Dry Eye Clinic, and Domicillary Services.
               </p>
             </div>
 
@@ -148,7 +148,7 @@ export default function AboutUsPage() {
               </div>
               <h2 className="text-3xl md:text-4xl font-medium mb-6">Our Mission</h2>
               <p className="text-lg text-white/90 leading-relaxed mb-6">
-                To provide exceptional eye care services that combine clinical excellence with personalized attention, ensuring every patient receives the highest standard of care.
+                To provide exceptional eye care services that combine clinical excellence with personalised attention, ensuring every patient receives the highest standard of care.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
@@ -182,7 +182,7 @@ export default function AboutUsPage() {
               </div>
               <h2 className="text-3xl md:text-4xl font-medium text-[#19395f] mb-6">Our Vision</h2>
               <p className="text-lg text-black/70 leading-relaxed mb-6">
-                To be the leading optometry practice in our community, recognized for our commitment to patient care, clinical expertise, and innovative approach to eye health.
+                To be the leading optometry practice in our community, recognised for our commitment to patient care, clinical expertise, and innovative approach to eye health.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
@@ -347,7 +347,7 @@ export default function AboutUsPage() {
                 <h3 className="text-xl font-semibold text-[#19395f] mb-1">Dr. Emily Williams</h3>
                 <p className="text-[#80acc9] text-sm font-medium mb-3">Contact Lens Specialist</p>
                 <p className="text-black/70 text-sm leading-relaxed">
-                  Specializing in contact lens fitting and dry eye treatment, Dr. Williams provides personalized solutions for every patient.
+                  Specialising in contact lens fitting and dry eye treatment, Dr. Williams provides personalised solutions for every patient.
                 </p>
               </div>
             </div>
@@ -423,7 +423,7 @@ export default function AboutUsPage() {
               },
               {
                 icon: '✓',
-                title: 'Personalized Care',
+                title: 'Personalised Care',
                 description: 'Tailored treatment plans and ongoing support for every patient.',
               },
               {
@@ -434,7 +434,7 @@ export default function AboutUsPage() {
               {
                 icon: '✓',
                 title: 'Comprehensive Services',
-                description: 'From routine exams to specialized treatments, we cover all your eye care needs.',
+                description: 'From routine exams to specialised treatments, we cover all your eye care needs.',
               },
             ].map((feature, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-md border border-[#e7e8ea]/50 hover:shadow-lg transition-shadow">
@@ -533,7 +533,7 @@ export default function AboutUsPage() {
                   <div>
                     <h3 className="font-semibold text-black mb-2">Local Partnerships</h3>
                     <p className="text-black/70 text-sm leading-relaxed">
-                      Collaborating with local organizations and schools to promote eye health awareness and provide educational programs.
+                      Collaborating with local organisations and schools to promote eye health awareness and provide educational programmes.
                     </p>
                   </div>
                 </div>

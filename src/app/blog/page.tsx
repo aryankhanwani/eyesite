@@ -196,7 +196,7 @@ export default function BlogPage() {
             Have Questions About Your Eye Health?
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Our expert team is here to help. Book an appointment or contact us for personalized advice.
+            Our expert team is here to help. Book an appointment or contact us for personalised advice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

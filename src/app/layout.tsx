@@ -147,7 +147,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://elfsightcdn.com" />
         <link rel="preconnect" href="https://elfsightcdn.com" crossOrigin="anonymous" />
         
-        {/* Optimize viewport for mobile */}
+        {/* Optimise viewport for mobile */}
         <meta name="theme-color" content="#19395f" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0d2440" media="(prefers-color-scheme: dark)" />
       </head>
