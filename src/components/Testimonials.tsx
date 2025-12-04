@@ -174,7 +174,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-black mb-12 leading-tight">
-            What Our Customers Say
+            {/* What Our Customers Say */}
           </h2>
         </motion.div>
 

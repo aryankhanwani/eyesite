@@ -293,7 +293,7 @@ export default function AppointmentForm() {
           </div>
 
           {/* Info Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 hidden md:block">
             {/* Contact Info Card */}
             <div className="bg-gradient-to-br from-[#19395f] to-[#80acc9] rounded-3xl p-8 md:p-10 text-white shadow-lg">
               <div className="flex items-start gap-4 mb-6">

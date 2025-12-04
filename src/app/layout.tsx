@@ -144,8 +144,8 @@ export default function RootLayout({
         {/* DNS Prefetch for third-party resources */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
-        <link rel="dns-prefetch" href="https://embedsocial.com" />
-        <link rel="preconnect" href="https://embedsocial.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://elfsightcdn.com" />
+        <link rel="preconnect" href="https://elfsightcdn.com" crossOrigin="anonymous" />
         
         {/* Optimize viewport for mobile */}
         <meta name="theme-color" content="#19395f" media="(prefers-color-scheme: light)" />

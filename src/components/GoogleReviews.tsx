@@ -4,10 +4,10 @@ import { useEffect } from 'react'
 
 export default function GoogleReviews() {
   useEffect(() => {
-    // Load EmbedSocial script using their exact pattern
-    const scriptId = 'EmbedSocialHashtagScript'
+    // Load Elfsight platform script
+    const scriptId = 'elfsight-platform-script'
     
-    // Check if script already exists (EmbedSocial's check)
+    // Check if script already exists
     if (document.getElementById(scriptId)) {
       return
     }
@@ -15,7 +15,7 @@ export default function GoogleReviews() {
     // Create script element
     const script = document.createElement('script')
     script.id = scriptId
-    script.src = 'https://embedsocial.com/cdn/ht.js'
+    script.src = 'https://elfsightcdn.com/platform.js'
     script.async = true
     
     // Append to head
@@ -50,21 +50,12 @@ export default function GoogleReviews() {
           </p>
         </div>
 
-        {/* EmbedSocial Widget */}
-        <div className="embedsocial-hashtag" data-ref="294e151b0ff1ffc164991c96cf6d9d7d4d9020de">
-          <a 
-            className="feed-powered-by-es feed-powered-by-es-slider-img es-widget-branding" 
-            href="https://embedsocial.com/blog/embed-google-reviews/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            title="Embed Google reviews"
-          >
-            <img 
-              src="https://embedsocial.com/cdn/icon/embedsocial-logo.webp" 
-              alt="EmbedSocial"
-            />
-            <div className="es-widget-branding-text">Embed Google reviews</div>
-          </a>
+        {/* Elfsight Google Reviews Widget */}
+        <div className="w-full" style={{ clipPath: 'inset(0 0 5% 0)' }}>
+          <div 
+            className="elfsight-app-858696bd-6a8f-40df-8f64-79eaa6409d69" 
+            data-elfsight-app-lazy
+          />
         </div>
       </div>
     </section>
