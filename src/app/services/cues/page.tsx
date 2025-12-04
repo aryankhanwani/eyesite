@@ -159,7 +159,7 @@ export default function CUESPage() {
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/cues.png"
+                  src="/when-cues.png"
                   alt="CUES Urgent Eye Care"
                   fill
                   className="object-cover"
@@ -257,7 +257,7 @@ export default function CUESPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/cues.png"
+                  src="/emergency.png"
                   alt="CUES Service"
                   fill
                   className="object-cover"

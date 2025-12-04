@@ -6,8 +6,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Comprehensive Eye Exams',
-  description: 'Professional eye examinations in Leeds using advanced OCT technology. NHS & private appointments available. Comprehensive health checks, prescription updates, and early disease detection at Eyesite Opticians.',
-  keywords: ['eye exam Leeds', 'eye test Leeds', 'NHS eye test', 'OCT scan', 'comprehensive eye examination', 'optometrist Leeds'],
+  description: 'Professional eye examinations in Leeds. NHS & private appointments available. Comprehensive health checks, prescription updates, and early disease detection at Eyesite Opticians.',
+  keywords: ['eye exam Leeds', 'eye test Leeds', 'NHS eye test', 'comprehensive eye examination', 'optometrist Leeds'],
 };
 
 export default function EyeExamsPage() {
@@ -194,13 +194,13 @@ export default function EyeExamsPage() {
             </div>
           </div>
 
-          {/* Advanced Technology Section */}
+          {/* Professional Care Section */}
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center mb-12 md:mb-16 lg:mb-20">
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/eye-exams.png"
-                  alt="Advanced Eye Examination Technology"
+                  src="/prof-eye-care.png"
+                  alt="Professional Eye Examination"
                   fill
                   className="object-cover"
                 />
@@ -209,10 +209,10 @@ export default function EyeExamsPage() {
             </div>
             <div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#19395f] mb-6">
-                Advanced Diagnostic Technology
+                Professional Eye Care
               </h2>
               <p className="text-lg text-black/70 mb-6 leading-relaxed">
-                We use state-of-the-art equipment to provide the most accurate assessments of your eye health and vision.
+                Our experienced optometrists provide thorough, professional eye examinations using proven methods to assess your vision and eye health.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -221,7 +221,7 @@ export default function EyeExamsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-black/70">Digital retinal photography for detailed eye health records</p>
+                  <p className="text-black/70">Comprehensive vision testing to determine your prescription needs</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#19395f] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -229,7 +229,7 @@ export default function EyeExamsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-black/70">Automated visual field testing for comprehensive assessment</p>
+                  <p className="text-black/70">Detailed examination of eye structures and health assessment</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#19395f] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -237,7 +237,7 @@ export default function EyeExamsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-black/70">Non-contact tonometry for comfortable pressure measurement</p>
+                  <p className="text-black/70">Personalised consultation and expert advice for your visual needs</p>
                 </div>
               </div>
             </div>
@@ -324,7 +324,7 @@ export default function EyeExamsPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/eye-exams.png"
+                  src="/eye-conditions.png"
                   alt="Eye Health Screening"
                   fill
                   className="object-cover"

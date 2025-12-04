@@ -141,7 +141,7 @@ export default function EyewearPage() {
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/eyewear.png"
+                  src="/perfect-frame.png"
                   alt="Frame Selection Process"
                   fill
                   className="object-cover"
@@ -270,7 +270,7 @@ export default function EyewearPage() {
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/eyewear.png"
+                  src="/custom-lens.png"
                   alt="Customised Lens Solutions"
                   fill
                   className="object-cover"

@@ -484,7 +484,7 @@ export default function AboutUsPage() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/eyewear.png"
+                  src="/community.png"
                   alt="Community Involvement"
                   fill
                   className="object-cover"

@@ -184,7 +184,7 @@ export default function ContactLensesPage() {
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/lens.png"
+                  src="/prof-fitting.png"
                   alt="Contact Lens Fitting Process"
                   fill
                   className="object-cover"
@@ -329,7 +329,7 @@ export default function ContactLensesPage() {
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/lens.png"
+                  src="/ongoing-care.png"
                   alt="Contact Lens Aftercare"
                   fill
                   className="object-cover"

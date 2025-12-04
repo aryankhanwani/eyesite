@@ -188,7 +188,7 @@ export default function DryEyePage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/prod-1.png"
+                  src="/dry-eye-syndrome.png"
                   alt="Understanding Dry Eye"
                   fill
                   className="object-cover"

@@ -222,7 +222,7 @@ export default function DomicillaryPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/domicillary.png"
+                  src="/equipments.png"
                   alt="Domicillary Eye Care Service"
                   fill
                   className="object-cover"
@@ -321,7 +321,7 @@ export default function DomicillaryPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="/domicillary.png"
+                  src="/expert-care.png"
                   alt="Professional Mobile Eye Care"
                   fill
                   className="object-cover"
