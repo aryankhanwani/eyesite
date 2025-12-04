@@ -168,13 +168,17 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Hero Section with Featured Image */}
       <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-end overflow-hidden pt-20 md:pt-24">
         <div className="absolute inset-0">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
+          {post.image ? (
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-[#19395f] to-[#0d2440]"></div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
         </div>
         
@@ -307,12 +311,16 @@ export default async function BlogPostPage({ params }: PageProps) {
                 >
                   <a href={`/blog/${relatedPost.slug}`} className="block">
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <Image
-                        src={relatedPost.image}
-                        alt={relatedPost.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
+                      {relatedPost.image ? (
+                        <Image
+                          src={relatedPost.image}
+                          alt={relatedPost.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#19395f] to-[#0d2440]"></div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
 

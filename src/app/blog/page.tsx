@@ -4,26 +4,54 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import { getAllBlogPosts, categories, type BlogPost } from '@/lib/supabase-blogs';
+import { getAllBlogPosts, clearBlogsCache, categories, type BlogPost } from '@/lib/supabase-blogs';
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const load = async () => {
-      setIsLoading(true);
-      try {
-        const all = await getAllBlogPosts();
-        setPosts(all);
-      } catch (error) {
-        console.error('Failed to load blogs:', error);
-      } finally {
-        setIsLoading(false);
+  const loadBlogs = async (forceRefresh = false) => {
+    setIsLoading(true);
+    try {
+      if (forceRefresh) {
+        clearBlogsCache();
       }
+      const all = await getAllBlogPosts(forceRefresh);
+      setPosts(all);
+    } catch (error) {
+      console.error('Failed to load blogs:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadBlogs();
+
+    // Listen for blog updates
+    const handleBlogUpdate = () => {
+      loadBlogs(true);
     };
-    load();
+
+    // Refresh when tab becomes active
+    const handleFocus = () => {
+      loadBlogs(true);
+    };
+
+    // Poll for updates every 10 seconds to catch changes quickly
+    const pollInterval = setInterval(() => {
+      loadBlogs(true);
+    }, 10000);
+
+    window.addEventListener('blog-updated', handleBlogUpdate);
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      clearInterval(pollInterval);
+      window.removeEventListener('blog-updated', handleBlogUpdate);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   const filteredPosts = selectedCategory === 'All' 
@@ -126,12 +154,16 @@ export default function BlogPage() {
                   <a href={`/blog/${post.slug}`} className="block">
                     {/* Featured Image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#19395f] to-[#0d2440]"></div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       
                       {/* Category Badge */}

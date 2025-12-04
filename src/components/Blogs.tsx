@@ -2,26 +2,54 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { getAllBlogPosts, type BlogPost } from '@/lib/supabase-blogs';
+import { getAllBlogPosts, clearBlogsCache, type BlogPost } from '@/lib/supabase-blogs';
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const load = async () => {
-      setIsLoading(true);
-      try {
-      const posts = await getAllBlogPosts();
-      setBlogs(posts.slice(0, 3));
-      } catch (error) {
-        console.error('Failed to load blogs:', error);
-      } finally {
-        setIsLoading(false);
+  const loadBlogs = async (forceRefresh = false) => {
+    setIsLoading(true);
+    try {
+      if (forceRefresh) {
+        clearBlogsCache();
       }
+      const posts = await getAllBlogPosts(forceRefresh);
+      setBlogs(posts.slice(0, 3));
+    } catch (error) {
+      console.error('Failed to load blogs:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadBlogs();
+
+    // Listen for blog updates
+    const handleBlogUpdate = () => {
+      loadBlogs(true);
     };
-    load();
+
+    // Refresh when tab becomes active
+    const handleFocus = () => {
+      loadBlogs(true);
+    };
+
+    // Poll for updates every 10 seconds to catch changes quickly
+    const pollInterval = setInterval(() => {
+      loadBlogs(true);
+    }, 10000);
+
+    window.addEventListener('blog-updated', handleBlogUpdate);
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      clearInterval(pollInterval);
+      window.removeEventListener('blog-updated', handleBlogUpdate);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   const formatDate = (dateString: string) => {
@@ -108,15 +136,19 @@ export default function Blogs() {
             >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  fill
-                  className={`object-cover transition-transform duration-700 ease-out ${
-                    hoveredSlug === blog.slug ? 'scale-110' : 'scale-100'
-                  }`}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                {blog.image ? (
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    fill
+                    className={`object-cover transition-transform duration-700 ease-out ${
+                      hoveredSlug === blog.slug ? 'scale-110' : 'scale-100'
+                    }`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#19395f] to-[#0d2440]"></div>
+                )}
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 

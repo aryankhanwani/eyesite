@@ -18,17 +18,24 @@ export interface BlogPost {
 let blogsCache: { data: BlogPost[]; timestamp: number } | null = null
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
+// Function to clear the cache (useful for instant updates)
+export function clearBlogsCache() {
+  blogsCache = null
+}
+
+export async function getAllBlogPosts(forceRefresh: boolean = false): Promise<BlogPost[]> {
   try {
-    // Check cache first
-    if (blogsCache && Date.now() - blogsCache.timestamp < CACHE_DURATION) {
+    // Check cache first (unless force refresh)
+    if (!forceRefresh && blogsCache && Date.now() - blogsCache.timestamp < CACHE_DURATION) {
       return blogsCache.data
     }
 
-    const response = await fetch('/api/blogs', {
-      next: { revalidate: 300 }, // Revalidate every 5 minutes
+    // Add timestamp to prevent browser cache
+    const cacheBuster = forceRefresh ? `?t=${Date.now()}` : ''
+    const response = await fetch(`/api/blogs${cacheBuster}`, {
+      cache: forceRefresh ? 'no-store' : 'default',
       headers: {
-        'Cache-Control': 'public, max-age=300',
+        'Cache-Control': forceRefresh ? 'no-cache' : 'public, max-age=300',
       },
     })
     
