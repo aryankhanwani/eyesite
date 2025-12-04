@@ -1,10 +1,61 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function GoogleReviews() {
+  const [shouldLoadWidget, setShouldLoadWidget] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
   useEffect(() => {
-    // Load Elfsight platform script
+    // Only load widget when user scrolls to the section or after a delay
+    // This prevents tracking on initial page load
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shouldLoadWidget) {
+            // Only load when section is visible
+            setShouldLoadWidget(true)
+          }
+        })
+      },
+      {
+        rootMargin: '100px', // Start loading 100px before it comes into view
+        threshold: 0.1,
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    // Fallback: Load after user interaction (click, scroll, etc.)
+    const handleUserInteraction = () => {
+      if (!shouldLoadWidget) {
+        setShouldLoadWidget(true)
+      }
+    }
+
+    // Listen for user interactions
+    window.addEventListener('scroll', handleUserInteraction, { once: true, passive: true })
+    window.addEventListener('click', handleUserInteraction, { once: true })
+    window.addEventListener('touchstart', handleUserInteraction, { once: true })
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+      window.removeEventListener('scroll', handleUserInteraction)
+      window.removeEventListener('click', handleUserInteraction)
+      window.removeEventListener('touchstart', handleUserInteraction)
+    }
+  }, [shouldLoadWidget])
+
+  useEffect(() => {
+    // Only load Elfsight script when widget should be loaded
+    if (!shouldLoadWidget) {
+      return
+    }
+
     const scriptId = 'elfsight-platform-script'
     
     // Check if script already exists
@@ -24,14 +75,14 @@ export default function GoogleReviews() {
     // Cleanup function
     return () => {
       const existingScript = document.getElementById(scriptId)
-      if (existingScript) {
+      if (existingScript && !shouldLoadWidget) {
         existingScript.remove()
       }
     }
-  }, [])
+  }, [shouldLoadWidget])
 
   return (
-    <section className="w-full py-16 md:py-24 bg-[#f4f6f8] relative">
+    <section ref={sectionRef} className="w-full py-16 md:py-24 bg-[#f4f6f8] relative">
       <div className="max-w-7xl mx-auto px-8 z-10">
         {/* Tag */}
         <div className="mb-4">
@@ -50,13 +101,19 @@ export default function GoogleReviews() {
           </p>
         </div>
 
-        {/* Elfsight Google Reviews Widget */}
-        <div className="w-full" style={{ clipPath: 'inset(0 0 5% 0)' }}>
-          <div 
-            className="elfsight-app-858696bd-6a8f-40df-8f64-79eaa6409d69" 
-            data-elfsight-app-lazy
-          />
-        </div>
+        {/* Elfsight Google Reviews Widget - Only loads when user interacts */}
+        {shouldLoadWidget ? (
+          <div className="w-full" style={{ clipPath: 'inset(0 0 5% 0)' }}>
+            <div 
+              className="elfsight-app-858696bd-6a8f-40df-8f64-79eaa6409d69" 
+              data-elfsight-app-lazy
+            />
+          </div>
+        ) : (
+          <div className="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+            <p className="text-gray-500">Loading reviews...</p>
+          </div>
+        )}
       </div>
     </section>
   )
