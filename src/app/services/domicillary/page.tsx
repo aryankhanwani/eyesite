@@ -379,7 +379,7 @@ export default function DomicillaryPage() {
                   Call Us Now
                 </a>
                 <a 
-                  href="mailto:info@eyesiteopticians.com" 
+                  href="mailto:eyesiteopticianshalton@gmail.com" 
                   className="inline-block px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-[#19395f] transition-colors text-sm md:text-base"
                 >
                   Email Us

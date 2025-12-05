@@ -9,7 +9,7 @@ export const businessInfo = {
   contact: {
     phone: "+44 113 260 0063",
     phoneDisplay: "0113 260 0063",
-    email: "info@eyesiteopticians.com",
+    email: "eyesiteopticianshalton@gmail.com",
     address: {
       street: "198 Selby Rd, Halton",
       city: "Leeds",
@@ -20,7 +20,7 @@ export const businessInfo = {
   },
   
   hours: {
-    weekdays: "9:00 AM - 6:00 PM",
+    weekdays: "9:00 AM - 5:30 PM",
     saturday: "9:00 AM - 5:00 PM",
     sunday: "Closed",
     note: "Emergency appointments available outside hours"
@@ -103,7 +103,7 @@ export const getStructuredData = () => {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "09:00",
-        "closes": "18:00"
+        "closes": "17:30"
       },
       {
         "@type": "OpeningHoursSpecification",
