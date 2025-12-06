@@ -224,12 +224,12 @@ export default function Footer() {
               </p>
               {/* Trust Badges */}
               <div className="flex items-center gap-4 mt-6">
-                <div className="h-8 w-auto grayscale brightness-0 invert opacity-70">
+                <div className="h-8 w-auto brightness-0 invert opacity-70 pt-1">
                   <Image
-                    src="/nhs logo.png"
+                    src="/nhs.png"
                     alt="NHS Logo"
-                    width={80}
-                    height={40}
+                    width={100}
+                    height={60}
                     className="h-8 w-auto object-contain"
                   />
                 </div>
