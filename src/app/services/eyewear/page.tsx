@@ -86,7 +86,7 @@ export default function EyewearPage() {
                 <h3 className="text-xl md:text-2xl font-semibold text-[#19395f] mb-3 md:mb-4">Precision Lenses</h3>
                 <p className="text-sm md:text-base text-black/70 leading-relaxed">
                   We combine your chosen frames with the latest lens technology—from thin, lightweight materials 
-                  to advanced anti-reflection coatings—ensuring optimal visual clarity and comfort.
+                  to modern anti-reflection coatings—ensuring optimal visual clarity and comfort.
                 </p>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function EyewearPage() {
           {/* Lens Technology */}
           <div className="mb-12 md:mb-16 lg:mb-20">
             <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-black mb-6 md:mb-8 lg:mb-12 text-center">
-              Advanced Lens Technology
+              Lens Technology
             </h2>
             
             <div className="grid md:grid-cols-3 gap-4 md:gap-6">
@@ -127,7 +127,7 @@ export default function EyewearPage() {
               </div>
               <div className="bg-white rounded-xl p-4 md:p-6 shadow-md border border-[#e7e8ea]/50">
                 <h3 className="font-semibold text-[#19395f] mb-2 md:mb-3 text-sm md:text-base">Anti-Reflection</h3>
-                <p className="text-xs md:text-sm text-black/70">Advanced coatings reduce glare and improve clarity, especially for night driving.</p>
+                <p className="text-xs md:text-sm text-black/70">Modern coatings reduce glare and improve clarity, especially for night driving.</p>
               </div>
               <div className="bg-white rounded-xl p-4 md:p-6 shadow-md border border-[#e7e8ea]/50">
                 <h3 className="font-semibold text-[#19395f] mb-2 md:mb-3 text-sm md:text-base">Blue Light Protection</h3>
@@ -345,7 +345,7 @@ export default function EyewearPage() {
               <div className="grid md:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center">
                   <h3 className="font-semibold text-base md:text-lg mb-2">Regular Cleaning</h3>
-                  <p className="text-white/90 text-xs md:text-sm">Use proper lens cleaning solutions and microfiber cloths</p>
+                  <p className="text-white/90 text-xs md:text-sm">Use proper lens cleaning solutions and microfibre cloths</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center">
                   <h3 className="font-semibold text-base md:text-lg mb-2">Proper Storage</h3>

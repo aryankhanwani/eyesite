@@ -13,7 +13,7 @@ const banners: Banner[] = [
   {
     id: 1,
     title: 'Comprehensive Eye Exams',
-    description: 'Advanced diagnostic technology for accurate vision assessment',
+    description: 'Modern diagnostic equipment for accurate vision assessment',
     color: 'bg-[#19395f]',
   },
   {
@@ -30,7 +30,7 @@ const banners: Banner[] = [
   },
   {
     id: 4,
-    title: 'Personalized Service',
+    title: 'Personalised Service',
     description: 'Tailored solutions to meet your unique vision needs',
     color: 'bg-[#80acc9]',
   },

@@ -54,7 +54,7 @@ const heroSlides: HeroSlide[] = [
     id: 2,
     image: '/hero2.png',
     title: 'Comprehensive Eye Examinations',
-    description: 'Advanced diagnostic technology for accurate vision assessment and early detection of eye conditions.',
+    description: 'Modern diagnostic equipment for accurate vision assessment and early detection of eye conditions.',
     tag: 'Professional Care',
   },
   {
@@ -68,7 +68,7 @@ const heroSlides: HeroSlide[] = [
     id: 4,
     image: '/hero4.png',
     title: 'Expert Optometrists',
-    description: 'Experienced professionals dedicated to your vision health and personalized eye care solutions.',
+    description: 'Experienced professionals dedicated to your vision health and personalised eye care solutions.',
     tag: 'Expert Care',
   },
 ];

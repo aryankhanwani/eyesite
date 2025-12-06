@@ -249,9 +249,9 @@ We stock premium designer frames including:
 ## Expert Fitting Service
 
 At Eyesite Opticians, our expert team will:
-1. Analyze your face shape
+1. Analyse your face shape
 2. Consider your lifestyle needs
-3. Match frames to your coloring
+3. Match frames to your colouring
 4. Ensure perfect fit and comfort
 5. Help you find your signature style
 
@@ -417,11 +417,11 @@ See an optometrist if you experience:
 
 ## Our Dry Eye Clinic
 
-At Eyesite Opticians, we specialize in dry eye management. Our services include:
+At Eyesite Opticians, we specialise in dry eye management. Our services include:
 
 - Comprehensive dry eye assessment
-- Personalized treatment plans
-- Advanced IPL therapy
+- Personalised treatment plans
+- Modern IPL therapy
 - Ongoing support and monitoring
 - Latest treatment options
 
@@ -462,7 +462,7 @@ Considering making the switch from glasses to contact lenses? Whether for sports
 - More natural eye movement
 
 ### Cosmetic Benefits
-- Change your eye color (colored lenses)
+- Change your eye colour (coloured lenses)
 - No frames covering your face
 - Freedom to wear non-prescription sunglasses
 
@@ -502,7 +502,7 @@ Considering making the switch from glasses to contact lenses? Whether for sports
 - Better for some prescriptions
 - Longer adaptation period
 
-### Specialized Lenses
+### Specialised Lenses
 
 **Toric Lenses**
 For astigmatism correction
@@ -551,7 +551,7 @@ For cosmetic purposes
 3. **Use Your Dominant Hand** - Hold lens on index finger
 4. **Hold Eyelids Open** - Use other hand to prevent blinking
 5. **Look Up** - Place lens below pupil
-6. **Close Eye Gently** - Allow lens to center
+6. **Close Eye Gently** - Allow lens to centre
 7. **Blink** - Settles the lens in place
 
 **Pro tip:** Practice with daily disposables first!
@@ -737,7 +737,7 @@ This gives your eye muscles a break and helps reduce fatigue.
 - Stick a note on your monitor
 - Use browser extensions
 
-## Optimize Your Workspace
+## Optimise Your Workspace
 
 ### Monitor Position
 - **Distance:** 20-26 inches from eyes
@@ -796,7 +796,7 @@ Short-wavelength light (400-495nm) emitted by digital screens and LED lights.
 Special glasses designed for intermediate distances (computer screens):
 
 ### Benefits
-- Optimized for screen distance (20-26 inches)
+- Optimised for screen distance (20-26 inches)
 - Reduces eye strain
 - Can include blue light filtering
 - Anti-reflective coating reduces glare
@@ -807,11 +807,11 @@ Special glasses designed for intermediate distances (computer screens):
 - Those experiencing symptoms of digital eye strain
 
 ### Available at Eyesite Opticians
-We offer customized computer glasses with:
+We offer customised computer glasses with:
 - Precise intermediate distance prescriptions
 - Anti-reflective coatings
 - Blue light filtering
-- Personalized fitting
+- Personalised fitting
 
 ## Exercises for Eye Strain Relief
 
@@ -911,21 +911,21 @@ Don't wait for symptoms to develop:
 
 ✅ Schedule regular eye exams
 ✅ Practice the 20-20-20 rule
-✅ Optimize your workspace
+✅ Optimise your workspace
 ✅ Take frequent breaks
 ✅ Consider computer glasses
 ✅ Use artificial tears as needed
 
 ## Expert Help at Eyesite Opticians
 
-We specialize in managing digital eye strain with:
+We specialise in managing digital eye strain with:
 
 - Comprehensive vision assessments
 - Custom computer glasses
 - Blue light filtering lenses
 - Workplace ergonomics advice
 - Dry eye treatments
-- Personalized recommendations
+- Personalised recommendations
 
 **Protect your eyes today!**
 

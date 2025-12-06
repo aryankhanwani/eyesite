@@ -22,8 +22,8 @@ export default function AboutUs() {
             {/* Description */}
             <p className="text-lg text-black/70 leading-relaxed">
               We are dedicated to providing comprehensive eye care solutions that enhance your vision 
-              and protect your eye health. Our experienced team combines advanced technology with 
-              personalized care to deliver exceptional results.
+              and protect your eye health. Our experienced team combines modern equipment with 
+              personalised care to deliver exceptional results.
             </p>
 
             {/* List of Services */}
@@ -45,7 +45,7 @@ export default function AboutUs() {
                   </svg>
                 </div>
                 <span className="text-base text-black/70">
-                  Comprehensive Eye Examinations - Advanced diagnostic technology for accurate vision assessment
+                  Comprehensive Eye Examinations - Modern diagnostic equipment for accurate vision assessment
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -113,10 +113,10 @@ export default function AboutUs() {
                   EXPERT CARE
                 </div>
                 <div className="bg-[#80acc9] text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">
-                  ADVANCED TECHNOLOGY
+                  MODERN EQUIPMENT
                 </div>
                 <div className="bg-[#b6dfe8] text-[#19395f] px-4 py-2 rounded-full text-sm font-medium shadow-md">
-                  PERSONALIZED SERVICE
+                  PERSONALISED SERVICE
                 </div>
               </div>
             </div>

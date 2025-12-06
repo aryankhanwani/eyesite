@@ -117,7 +117,7 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-lg font-semibold text-[#19395f] mb-3">Technology Integration</h3>
               <p className="text-black/70 text-sm leading-relaxed">
-                Invested in state-of-the-art diagnostic equipment and advanced lens technology.
+                Invested in state-of-the-art diagnostic equipment and modern lens technology.
               </p>
             </div>
 
@@ -393,7 +393,7 @@ export default function AboutUsPage() {
               },
               {
                 icon: '✓',
-                title: 'Advanced Technology',
+                title: 'Modern Equipment',
                 description: 'State-of-the-art diagnostic equipment for accurate assessments.',
               },
               {

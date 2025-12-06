@@ -14,7 +14,7 @@ const services: Service[] = [
   {
     id: 1,
     title: 'Eye Exams',
-    description: 'Comprehensive eye examinations using advanced diagnostic technology for accurate vision assessment. NHS and private examinations available.',
+    description: 'Comprehensive eye examinations using modern diagnostic equipment for accurate vision assessment. NHS and private examinations available.',
     image: '/eye-exams.png',
     link: '/services/eye-exams',
   },

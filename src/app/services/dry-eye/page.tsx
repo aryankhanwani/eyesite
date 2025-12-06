@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Dry Eye Treatment Clinic',
-  description: 'Specialist dry eye treatment in Leeds. Advanced diagnostics and personalised treatment plans including IPL therapy. Relief from dry, irritated, watery eyes at Eyesite Opticians.',
+  description: 'Specialist dry eye treatment in Leeds. Modern diagnostics and personalised treatment plans including IPL therapy. Relief from dry, irritated, watery eyes at Eyesite Opticians.',
   keywords: ['dry eye treatment Leeds', 'dry eye clinic Leeds', 'IPL therapy Leeds', 'eye irritation treatment', 'watery eyes treatment', 'blepharitis treatment Leeds'],
 };
 
