@@ -6,7 +6,7 @@ export default function TrustBadges() {
       <div className="max-w-6xl mx-auto px-8">
         <div className="flex flex-col items-center gap-8">
           <p className="text-sm md:text-base text-[#19395f]/80 font-medium uppercase tracking-wide">
-            Trusted by leading healthcare organizations
+            Trusted by leading healthcare organisations
           </p>
           <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
             {/* NHS Logo */}

@@ -44,7 +44,7 @@ export default function Home() {
       <AboutUs />
       <Services />
       <WhyChooseUs />
-      <PromoBanner />
+      {/* <PromoBanner /> */}
       <VoucherPartners />
       <GoogleReviews />
       <AppointmentForm />
