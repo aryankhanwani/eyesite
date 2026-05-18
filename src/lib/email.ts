@@ -1,55 +1,125 @@
 import nodemailer from 'nodemailer'
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
 
-// Create reusable transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-})
+type SendEmailArgs = {
+  to: string | string[]
+  subject: string
+  html: string
+  text?: string
+}
 
-// Verify connection on startup
-transporter.verify((error, success) => {
-  // Connection verification (silent)
-})
+export type EmailSendResult = {
+  success: boolean
+  messageId?: string
+  error?: string
+  code?: string
+  responseCode?: number
+}
+
+type MailError = {
+  message?: string
+  code?: string
+  command?: string
+  response?: string
+  responseCode?: number
+}
+
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : 'Unknown email error'
+}
+
+function validateEmailConfig() {
+  const requiredEnvVars = [
+    'GMAIL_USER',
+    'GMAIL_CLIENT_ID',
+    'GMAIL_CLIENT_SECRET',
+    'GMAIL_REFRESH_TOKEN',
+  ]
+
+  const missingVars = requiredEnvVars.filter((varName) => !process.env[varName])
+
+  if (missingVars.length > 0) {
+    throw new Error(`Missing email environment variables: ${missingVars.join(', ')}`)
+  }
+}
+
+function createTransporter() {
+  validateEmailConfig()
+
+  const options: SMTPTransport.Options = {
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.GMAIL_USER,
+      clientId: process.env.GMAIL_CLIENT_ID,
+      clientSecret: process.env.GMAIL_CLIENT_SECRET,
+      refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+    },
+    connectionTimeout: 15000,
+    greetingTimeout: 15000,
+    socketTimeout: 20000,
+  }
+
+  return nodemailer.createTransport(options)
+}
 
 function getBaseUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  return process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 }
 
 function getAdminBaseUrl() {
   return process.env.NEXT_PUBLIC_ADMIN_URL || process.env.ADMIN_BASE_URL || 'http://localhost:3001'
 }
 
-// Send email function
-export async function sendEmail({
-  to,
-  subject,
-  html,
-  text,
-}: {
-  to: string | string[]
-  subject: string
-  html: string
-  text?: string
-}) {
-  try {
-    const info = await transporter.sendMail({
-      from: `"Eyesite Opticians" <${process.env.GMAIL_USER}>`,
-      to: Array.isArray(to) ? to.join(', ') : to,
-      subject,
-      text: text || html.replace(/<[^>]*>/g, ''),
-      html,
-    })
+export async function sendEmail({ to, subject, html, text }: SendEmailArgs): Promise<EmailSendResult> {
+  let lastError: MailError | null = null
 
-    return { success: true, messageId: info.messageId }
-  } catch (error: any) {
-    return { success: false, error: error.message }
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const transporter = createTransporter()
+
+    try {
+      await transporter.verify()
+
+      const info = await transporter.sendMail({
+        from: `"Eyesite Opticians" <${process.env.GMAIL_USER}>`,
+        to: Array.isArray(to) ? to.join(', ') : to,
+        subject,
+        text: text || html.replace(/<[^>]*>/g, ''),
+        html,
+      })
+
+      return {
+        success: true,
+        messageId: String(info.messageId),
+      }
+    } catch (error: unknown) {
+      const mailError = error as MailError
+      lastError = mailError
+
+      console.error(`Email attempt ${attempt} failed:`, {
+        message: getErrorMessage(error),
+        code: mailError.code,
+        command: mailError.command,
+        response: mailError.response,
+        responseCode: mailError.responseCode,
+      })
+
+      if (attempt === 1) {
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+      }
+    } finally {
+      transporter.close()
+    }
+  }
+
+  return {
+    success: false,
+    error: lastError?.message || 'Failed to send email',
+    code: lastError?.code,
+    responseCode: lastError?.responseCode,
   }
 }
 
-// Send admin notification
 export async function sendAdminNotification({
   subject,
   html,
@@ -58,7 +128,7 @@ export async function sendAdminNotification({
   subject: string
   html: string
   text?: string
-}) {
+}): Promise<EmailSendResult> {
   const adminEmail = process.env.ADMIN_EMAIL
   if (!adminEmail) {
     return { success: false, error: 'Admin email not configured' }
@@ -75,6 +145,8 @@ export async function sendAdminNotification({
 // Email templates
 export const emailTemplates = {
   newsletterWelcome: (email: string) => {
+    void email
+
     return {
       subject: 'Welcome to Eyesite Opticians Newsletter!',
       html: `
@@ -206,6 +278,8 @@ export const emailTemplates = {
   },
 
   voucherCode: (email: string, code: string) => {
+    void email
+
     return {
       subject: 'Your 20% Off Voucher Code - Eyesite Opticians',
       html: `
@@ -347,4 +421,3 @@ export const emailTemplates = {
     }),
   },
 }
-

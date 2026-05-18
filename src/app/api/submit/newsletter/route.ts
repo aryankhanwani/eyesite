@@ -2,6 +2,10 @@ import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 import { sendNewsletterWelcome, sendAdminNewsletterNotification } from '@/lib/email-client'
 
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : 'Internal server error'
+}
+
 export async function POST(request: Request) {
   try {
     const { email } = await request.json()
@@ -57,17 +61,24 @@ export async function POST(request: Request) {
       )
     }
 
-    // Send welcome email to subscriber (non-blocking)
-    sendNewsletterWelcome(email).catch(err => console.error('Failed to send newsletter welcome email:', err))
+    const emailResults = await Promise.allSettled([
+      sendNewsletterWelcome(email),
+      sendAdminNewsletterNotification(email),
+    ])
 
-    // Send notification to admin (non-blocking)
-    sendAdminNewsletterNotification(email).catch(err => console.error('Failed to send admin notification:', err))
+    emailResults.forEach((result, index) => {
+      if (result.status === 'rejected' || !result.value.success) {
+        console.error(index === 0
+          ? 'Failed to send newsletter welcome email:'
+          : 'Failed to send admin notification:',
+          result.status === 'rejected' ? result.reason : result.value
+        )
+      }
+    })
 
     return NextResponse.json({ success: true, data })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Unexpected error:', error)
-    return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: getErrorMessage(error) }, { status: 500 })
   }
 }
-
-

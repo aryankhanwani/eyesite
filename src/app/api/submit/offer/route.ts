@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { sendVoucherCode, sendAdminOfferNotification } from '@/lib/email-client'
 
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : 'Internal server error'
+}
+
 function generateCode() {
   return `EYESITE${Math.random().toString(36).substring(2, 8).toUpperCase()}`
 }
@@ -48,11 +52,20 @@ export async function POST(request: Request) {
         .single()
 
       if (!error) {
-        // Send voucher email to customer (non-blocking)
-        sendVoucherCode(email, code).catch(err => console.error('Failed to send voucher email:', err))
+        const emailResults = await Promise.allSettled([
+          sendVoucherCode(email, code),
+          sendAdminOfferNotification(email, code),
+        ])
 
-        // Send notification to admin (non-blocking)
-        sendAdminOfferNotification(email, code).catch(err => console.error('Failed to send admin notification:', err))
+        emailResults.forEach((result, index) => {
+          if (result.status === 'rejected' || !result.value.success) {
+            console.error(index === 0
+              ? 'Failed to send voucher email:'
+              : 'Failed to send admin notification:',
+              result.status === 'rejected' ? result.reason : result.value
+            )
+          }
+        })
 
         return NextResponse.json({ success: true, data })
       }
@@ -85,10 +98,8 @@ export async function POST(request: Request) {
       { error: 'Failed to generate unique code' },
       { status: 500 }
     )
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Unexpected error:', error)
-    return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: getErrorMessage(error) }, { status: 500 })
   }
 }
-
-
