@@ -29,32 +29,47 @@ function getErrorMessage(error: unknown) {
 }
 
 function validateEmailConfig() {
-  const requiredEnvVars = [
-    'GMAIL_USER',
+  if (!process.env.GMAIL_USER) {
+    throw new Error('Missing email environment variable: GMAIL_USER')
+  }
+
+  if (process.env.GMAIL_APP_PASSWORD) {
+    return
+  }
+
+  const requiredOAuthVars = [
     'GMAIL_CLIENT_ID',
     'GMAIL_CLIENT_SECRET',
     'GMAIL_REFRESH_TOKEN',
   ]
-
-  const missingVars = requiredEnvVars.filter((varName) => !process.env[varName])
+  const missingVars = requiredOAuthVars.filter((varName) => !process.env[varName])
 
   if (missingVars.length > 0) {
-    throw new Error(`Missing email environment variables: ${missingVars.join(', ')}`)
+    throw new Error(
+      `Missing email auth. Set GMAIL_APP_PASSWORD or OAuth variables: ${missingVars.join(', ')}`
+    )
   }
 }
 
 function createTransporter() {
   validateEmailConfig()
 
+  const auth: SMTPTransport.Options['auth'] = process.env.GMAIL_APP_PASSWORD
+    ? {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      }
+    : {
+        type: 'OAuth2',
+        user: process.env.GMAIL_USER,
+        clientId: process.env.GMAIL_CLIENT_ID,
+        clientSecret: process.env.GMAIL_CLIENT_SECRET,
+        refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+      }
+
   const options: SMTPTransport.Options = {
     service: 'gmail',
-    auth: {
-      type: 'OAuth2',
-      user: process.env.GMAIL_USER,
-      clientId: process.env.GMAIL_CLIENT_ID,
-      clientSecret: process.env.GMAIL_CLIENT_SECRET,
-      refreshToken: process.env.GMAIL_REFRESH_TOKEN,
-    },
+    auth,
     connectionTimeout: 15000,
     greetingTimeout: 15000,
     socketTimeout: 20000,
