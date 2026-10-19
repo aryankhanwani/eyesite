@@ -4,6 +4,7 @@ import TrustBadges from '@/components/TrustBadges';
 import PromoBanner from '@/components/PromoBanner';
 import AboutUs from '@/components/AboutUs';
 import Services from '@/components/Services';
+import ZestTreatment from '@/components/ZestTreatment';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import VoucherPartners from '@/components/VoucherPartners';
 import GoogleReviews from '@/components/GoogleReviews';
@@ -14,7 +15,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Eyesite Opticians | Expert Eye Care in Leeds',
-  description: 'Professional optometry services in Leeds. Comprehensive eye exams, designer eyewear, contact lenses, dry eye treatment, CUES service. NHS & private appointments. 4.9★ Google rating. Located in Halton, Leeds.',
+  description: 'Professional optometry services in Leeds. Comprehensive eye exams, designer eyewear, contact lenses, ZEST® eyelid cleansing, dry eye treatment, CUES service. NHS & private appointments. 4.9★ Google rating. Located in Halton, Leeds.',
   keywords: [
     'opticians Leeds',
     'eye test Leeds',
@@ -25,7 +26,11 @@ export const metadata: Metadata = {
     'NHS eye test Leeds',
     'private opticians Leeds',
     'dry eye treatment',
-    'CUES service Leeds'
+    'CUES service Leeds',
+    'ZEST treatment Leeds',
+    'eyelid cleansing Leeds',
+    'blepharitis treatment Leeds',
+    'Meibomian gland dysfunction Leeds'
   ],
   openGraph: {
     title: 'Eyesite Opticians | Expert Eye Care in Leeds',
@@ -43,6 +48,7 @@ export default function Home() {
       <TrustBadges />
       <AboutUs />
       <Services />
+      <ZestTreatment />
       <WhyChooseUs />
       {/* <PromoBanner /> */}
       <VoucherPartners />
